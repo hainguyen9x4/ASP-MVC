@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using WebApplication2.Areas.Admin.Code;
 using WebApplication2.Areas.Admin.Data;
 
@@ -21,10 +22,11 @@ namespace WebApplication2.Areas.Admin.Controllers
     [ValidateAntiForgeryToken]
     public ActionResult Index(LoginModel model)
     {
-      var ret = new AccountModel().Login(model.Username, model.Password);
-      if (ret && ModelState.IsValid)
+      //var ret = new AccountModel().Login(model.Username, model.Password);
+      if (/*ret*/Membership.ValidateUser(model.Username,model.Password) && ModelState.IsValid)
       {
-        SessionHelper.SetSession(new UserSession() { Username = model.Username });
+        //SessionHelper.SetSession(new UserSession() { Username = model.Username });
+        FormsAuthentication.SetAuthCookie(model.Username,model.Remember);
         return RedirectToAction("Index", "Admin");
       }
       else
@@ -32,6 +34,11 @@ namespace WebApplication2.Areas.Admin.Controllers
         ModelState.AddModelError("", "Login failed!");
       }
       return View(model);
+    }
+    public ActionResult Logout()
+    {
+      FormsAuthentication.SignOut();
+      return RedirectToAction("Index", "Login");
     }
   }
 }
