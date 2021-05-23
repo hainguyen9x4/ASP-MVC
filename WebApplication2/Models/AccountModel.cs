@@ -10,10 +10,10 @@ namespace Models
 {
   public class AccountModel
   {
-    private Model1 context = null;
+    private OnlineDbContext context = null;
     public AccountModel()
     {
-      context = new Model1();
+      context = new OnlineDbContext();
     }
     public bool Login(string username, string password)
     {

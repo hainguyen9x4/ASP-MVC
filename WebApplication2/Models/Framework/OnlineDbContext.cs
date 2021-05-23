@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace Models.Framework
 {
-  public partial class Model1 : DbContext
+  public partial class OnlineDbContext : DbContext
   {
-    public Model1()
+    public OnlineDbContext()
         : base("name=OnlineDbContext")
     {
     }
@@ -17,8 +17,8 @@ namespace Models.Framework
 
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
-      modelBuilder.Entity<Account>().Property(e => e.UserName).IsUnicode(false);
-      modelBuilder.Entity<Account>().Property(e => e.Password).IsUnicode(false);
+      //modelBuilder.Entity<Account>().Property(e => e.UserName).IsUnicode(false);
+      //modelBuilder.Entity<Account>().Property(e => e.Password).IsUnicode(false);
     }
   }
 }
