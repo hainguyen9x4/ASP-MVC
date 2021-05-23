@@ -1,4 +1,15 @@
 WebApplication2/.vs/WebApplication2/v16/.suo
-**/bin/*
-**/obj/*
 WebApplication2/.vs/WebApplication2/v16/.suo
+/bin/
+WebApplication2/Models/bin/
+WebApplication2/Models/obj/
+WebApplication2/Model/obj/*
+WebApplication2/Models/obj/Debug/Models.dll
+WebApplication2/Models/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+WebApplication2/Models/obj/Debug/Models.csproj.CopyComplete
+WebApplication2/Models/obj/Debug/Models.csproj.CoreCompileInputs.cache
+WebApplication2/Models/obj/Debug/Models.csproj.FileListAbsolute.txt
+WebApplication2/Models/obj/Debug/Models.csprojAssemblyReference.cache
+WebApplication2/Models/obj/Debug/Models.dll
+WebApplication2/Models/obj/Debug/Models.pdb
+WebApplication2/WebApplication2/bin/Models.dll
