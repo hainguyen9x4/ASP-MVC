@@ -5,3 +5,8 @@ WebApplication2/Model/obj/
 WebApplication2/WebApplication2/bin/
 WebApplication2/WebApplication2/obj/
 WebApplication2/.vs/WebApplication2/v16/.suo
+WebApplication2/WebApplication2/WebApplication2.csproj.user
+WebApplication2/WebApplication2/WebApplication2.csproj.user
+WebApplication2/WebApplication2/obj/Debug/WebApplication2.csproj.CoreCompileInputs.cache
+WebApplication2/Models/obj/Debug/Models.csproj.CoreCompileInputs.cache
+*.cache
