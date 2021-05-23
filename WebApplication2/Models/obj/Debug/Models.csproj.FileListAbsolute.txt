@@ -1,1 +1,12 @@
 D:\HOC_TAP\Git\ASP-MVC\WebApplication2\Models\obj\Debug\Models.csproj.CoreCompileInputs.cache
+D:\HOC_TAP\Git\ASP-MVC\WebApplication2\Models\obj\Debug\Models.csprojAssemblyReference.cache
+D:\HOC_TAP\Git\ASP-MVC\WebApplication2\Models\bin\Debug\Models.dll.config
+D:\HOC_TAP\Git\ASP-MVC\WebApplication2\Models\bin\Debug\Models.dll
+D:\HOC_TAP\Git\ASP-MVC\WebApplication2\Models\bin\Debug\Models.pdb
+D:\HOC_TAP\Git\ASP-MVC\WebApplication2\Models\bin\Debug\EntityFramework.dll
+D:\HOC_TAP\Git\ASP-MVC\WebApplication2\Models\bin\Debug\EntityFramework.SqlServer.dll
+D:\HOC_TAP\Git\ASP-MVC\WebApplication2\Models\bin\Debug\EntityFramework.xml
+D:\HOC_TAP\Git\ASP-MVC\WebApplication2\Models\bin\Debug\EntityFramework.SqlServer.xml
+D:\HOC_TAP\Git\ASP-MVC\WebApplication2\Models\obj\Debug\Models.csproj.CopyComplete
+D:\HOC_TAP\Git\ASP-MVC\WebApplication2\Models\obj\Debug\Models.dll
+D:\HOC_TAP\Git\ASP-MVC\WebApplication2\Models\obj\Debug\Models.pdb

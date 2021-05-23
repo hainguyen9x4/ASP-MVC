@@ -8,7 +8,7 @@ namespace Models.Framework
   public partial class OnlineDbContext : DbContext
   {
     public OnlineDbContext()
-        : base("name=OnlineDbContext")
+        : base("name=Model1")
     {
     }
 

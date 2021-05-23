@@ -55,8 +55,9 @@
   <ItemGroup>
     <Compile Include="AccountModel.cs" />
     <Compile Include="Framework\Account.cs" />
+    <Compile Include="Framework\Category.cs" />
     <Compile Include="Framework\OnlineDbContext.cs" />
-    <Compile Include="Framework\UserInfor.cs" />
+    <Compile Include="Framework\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
