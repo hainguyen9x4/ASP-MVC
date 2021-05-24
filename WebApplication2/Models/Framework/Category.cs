@@ -11,7 +11,7 @@ namespace Models.Framework
     {
         public int ID { get; set; }
 
-        [StringLength(10,ErrorMessage ="Must less than 50 characters")]
+        [StringLength(20,ErrorMessage ="Must less than 20 characters")]
         [Required(ErrorMessage ="This field is required!")]
         [Display(Name="Name of category")]
         public string Name { get; set; }

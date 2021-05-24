@@ -29,10 +29,20 @@ namespace WebApplication2.Areas.Admin.Controllers
         if (ModelState.IsValid)
         {
           //Insert by sql
-          return RedirectToAction("Index");
+          var categoryModel = new CategoryModel();
+          int res = categoryModel.AddACategory(categor.Name, categor.Order, categor.Status);
+          if(res > 0)
+          {
+            return RedirectToAction("Index");
+          }
+          else
+          {
+            ModelState.AddModelError("","Add failed!");
+          }
+          
         }
         return View(categor);
-      } catch
+      } catch(Exception ex)
       {
         return View();
       }
