@@ -24,7 +24,7 @@
                                     @using (Html.BeginForm())
                                     {
                                         @Html.AntiForgeryToken()
-                                        @Html.ValidationSummary(true, null, new { @class = "alert alert-danger" })
+                                        @Html.ValidationSummary(false, null, new { @class = "alert alert-danger" })
                                         <div class="form-group">
                                             @Html.TextBoxFor(model => model.Username, new { @class = "form-control", @placeholder = "Username", @autofocus = "autofocus" })
 

@@ -21,20 +21,29 @@ namespace OnlineShop.Areas.Admin.Controllers
     [ValidateAntiForgeryToken]
     public ActionResult Index(LoginModel model)
     {
-      var dao = new UserDao();
-      var res = dao.Login(model.Username, model.Password);
-      if (res && ModelState.IsValid)
+      if (ModelState.IsValid)
       {
-        var user = dao.GetID(model.Username);
-        var userSession = new UserLogin();
-        userSession.UserName = user.Username;
-        userSession.Id = user.ID;
-        Session.Add(CommonConstant.USER_SESSION, userSession);
-        return RedirectToAction("Index", "Home");
-      }
-      else
-      {
-        ModelState.AddModelError("", "Login failed!");
+        var dao = new UserDao();
+        var res = dao.Login(model.Username, Encryptor.MD5Hash(model.Password));
+        if (res == CommonConstant.kSuccess)
+        {
+          var user = dao.GetID(model.Username);
+          var userSession = new UserLogin();
+          userSession.UserName = user.Username;
+          userSession.Id = user.ID;
+          Session.Add(CommonConstant.USER_SESSION, userSession);
+          return RedirectToAction("Index", "Home");
+        }else if(res == CommonConstant.kUserLocked)
+        {
+          ModelState.AddModelError("", "Username is locked!");
+        }else if(res == CommonConstant.kNoExist)
+        {
+          ModelState.AddModelError("", "No exist user!");
+        }
+        else if(res == CommonConstant.kWrongPassword)
+        {
+          ModelState.AddModelError("", "Wrong password!");
+        }
       }
       return View();
     }
