@@ -11,4 +11,7 @@ WebApplication2/WebApplication2/obj/Debug/WebApplication2.csproj.CoreCompileInpu
 WebApplication2/Models/obj/Debug/Models.csproj.CoreCompileInputs.cache
 *.cache
 ASP.NET MVC - #9_ Insert dữ liệu với Store Procedure _ Insert Data with store procedure  _ TEDU.mp4
-OnlineShop/OnlineShop/OnlineShop/obj/Debug/OnlineShop.dll
+OnlineShop/OnlineShop/OnlineShop/obj/
+OnlineShop/OnlineShop/OnlineShop/bin/
+OnlineShop/OnlineShop/Model/bin/
+OnlineShop/OnlineShop/Model/obj/
