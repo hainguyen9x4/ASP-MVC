@@ -33,7 +33,10 @@ namespace OnlineShop.Areas.Admin.Controllers
                 if (id > 0)
                 {
                     return RedirectToAction("Index","Home");
-                }
+                }else if(id == 0)
+                {
+                ModelState.AddModelError("", "User is exist!");
+                 }
                 else
                 {
                     ModelState.AddModelError("", "Add new user failed!");
