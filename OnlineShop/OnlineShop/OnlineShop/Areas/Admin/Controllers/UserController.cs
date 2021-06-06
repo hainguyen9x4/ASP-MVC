@@ -6,15 +6,17 @@ using System.Web;
 using System.Web.Mvc;
 using Model.EF;
 using OnlineShop.Common;
-
+using PagedList;
 namespace OnlineShop.Areas.Admin.Controllers
 {
     public class UserController : BaseController
     {
         // GET: Admin/User
-        public ActionResult Index()
+        public ActionResult Index(int page =1, int page_zise =1)
         {
-            return View();
+            var dao = new UserDao();
+            var list = dao.GetListUser(page, page_zise);
+            return View(list);
         }
         [HttpGet]
         public ActionResult Create()

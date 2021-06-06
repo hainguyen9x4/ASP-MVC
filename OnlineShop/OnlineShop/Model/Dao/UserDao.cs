@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using PagedList;
 namespace Model.Dao
 {
   public class UserDao
@@ -23,6 +23,10 @@ namespace Model.Dao
         return entity.ID;
       }
       else return 0;
+    }
+    public IEnumerable<User> GetListUser(int page, int page_size)
+    {
+      return db.Users.OrderBy(x=>x.CreatedDate).ToPagedList(page, page_size);
     }
     public User GetID(string userName)
     {
