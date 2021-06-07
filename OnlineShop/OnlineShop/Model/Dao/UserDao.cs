@@ -32,6 +32,10 @@ namespace Model.Dao
     {
       return db.Users.SingleOrDefault(x => x.Username == userName);
     }
+    public User GetUserFromID(int id)
+    {
+      return db.Users.Find(id);
+    }
     public int Login(string username, string password)
     {
       var res = db.Users.SingleOrDefault(x => x.Username == username);
@@ -53,6 +57,42 @@ namespace Model.Dao
         {
           return -1;//wrong pass
         }
+      }
+    }
+    public bool Update(User entity)
+    {
+      try
+      {
+        var user = db.Users.Find(entity.ID);
+        if (!String.IsNullOrEmpty(entity.Name))
+        {
+          user.Name = entity.Name;
+        }
+        if (!String.IsNullOrEmpty(entity.Email))
+        {
+          user.Email = entity.Email;
+        }        
+        if (!String.IsNullOrEmpty(entity.Password))
+        {
+          user.Password = entity.Password;
+        }
+        if (!String.IsNullOrEmpty(entity.Address))
+        {
+          user.Address = entity.Address;
+        }
+        user.ModifyBy = entity.ModifyBy;
+        user.ModifyDate = DateTime.Now;
+        if (!String.IsNullOrEmpty(entity.Phone))
+        {
+          user.Phone = entity.Phone;
+        }
+        db.SaveChanges();
+        return true;
+      }
+      catch (Exception ex)
+      {
+        //Write log
+        return false;
       }
     }
     public void Logout()

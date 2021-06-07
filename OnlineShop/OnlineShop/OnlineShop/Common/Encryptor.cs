@@ -11,6 +11,10 @@ namespace OnlineShop.Common
   {
     public static string MD5Hash(string text)
     {
+      if (String.IsNullOrEmpty(text))
+      {
+        return null;
+      }
       MD5 md5 = new MD5CryptoServiceProvider();
 
       //compute hash from the bytes of text  

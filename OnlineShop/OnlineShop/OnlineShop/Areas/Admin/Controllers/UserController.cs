@@ -18,6 +18,11 @@ namespace OnlineShop.Areas.Admin.Controllers
             var list = dao.GetListUser(page, page_zise);
             return View(list);
         }
+        public ActionResult Edit(int id)
+        {
+          var user = new UserDao().GetUserFromID(id);
+          return View(user);
+        }
         [HttpGet]
         public ActionResult Create()
         {
@@ -46,5 +51,28 @@ namespace OnlineShop.Areas.Admin.Controllers
             }
             return View();
         }
+    [HttpPost]
+    public ActionResult Edit(User user)
+    {
+      if (ModelState.IsValid)
+      {
+        var dao = new UserDao();
+        var user_session = Session.SessionID;
+        var currentUser = (UserLogin)Session[CommonConstant.USER_SESSION];
+        user.ModifyBy = currentUser.UserName;
+        var pass = Encryptor.MD5Hash(user.Password);
+        user.Password = pass;
+        bool ret = dao.Update(user);
+        if (ret)
+        {
+          return RedirectToAction("Index", "User");
+        }
+        else
+        {
+          ModelState.AddModelError("", "Update user failed!");
+        }
+      }
+      return View();
     }
+  }
 }
