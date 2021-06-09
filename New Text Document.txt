@@ -1,0 +1,10 @@
+select *
+from Donhangchitiet 
+INNER JOIN (SELECT SpID,TenSP,IDdanhmuc,danhmuc.Tendanhmuc,DonVi, Gia,TenLienHe,Diachi 
+            FROM (SELECT sanpham.SanPhamid as SpID,sanpham.Tensanpham as TenSP,sanpham.DanhMucID as IDdanhmuc, sanpham.DonVi as DonVi, sanpham.Gia as Gia, cungcap.TenLienhe as TenLienHe, cungcap.diachi as Diachi
+            FROM sanpham INNER JOIN cungcap ON
+           sanpham.cungcapid=cungcap.cungcapid) as tab2
+           , Danhmuc
+            where tab2.IDdanhmuc =danhmuc.danhmucid)as tab3
+           ON Donhangchitiet.sanphamid = tab3.SpID
+ORDER by Donhangchitiet.DonhangchitietID asc
