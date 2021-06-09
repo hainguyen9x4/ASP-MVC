@@ -160,6 +160,7 @@
     <Content Include="Areas\Assets\js\demo\chart-bar-demo.js" />
     <Content Include="Areas\Assets\js\demo\chart-pie-demo.js" />
     <Content Include="Areas\Assets\js\demo\datatables-demo.js" />
+    <Content Include="Areas\Assets\js\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Areas\Assets\js\sb-admin-2.js" />
     <Content Include="Areas\Assets\js\sb-admin-2.min.js" />
     <Content Include="Areas\Assets\vendor\bootstrap\js\bootstrap.bundle.js" />
@@ -2027,6 +2028,8 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />

@@ -74,6 +74,7 @@ namespace OnlineShop.Areas.Admin.Controllers
       }
       return View();
     }
+    [HttpDelete]
     public ActionResult Delete(int id)
     {
       var dao = new UserDao();
