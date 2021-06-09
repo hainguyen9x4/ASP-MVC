@@ -16,7 +16,7 @@ namespace Model.Dao
     }
     public long Insert(User entity)
     {
-      if (db.Users.Single(x => x.Username == entity.Username) == null)
+      if (db.Users.SingleOrDefault(x => x.Username == entity.Username) == null)
       {
         db.Users.Add(entity);
         db.SaveChanges();
@@ -98,6 +98,20 @@ namespace Model.Dao
     public void Logout()
     {
 
+    }
+    public bool Delete(int userID)
+    {
+      try
+      {
+        var user = db.Users.Find(userID);
+        db.Users.Remove(user);
+        db.SaveChanges();
+        return true;
+      }
+      catch
+      {
+        return false;
+      }
     }
   }
 }

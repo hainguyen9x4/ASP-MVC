@@ -12,7 +12,7 @@ namespace OnlineShop.Areas.Admin.Controllers
     public class UserController : BaseController
     {
         // GET: Admin/User
-        public ActionResult Index(int page =1, int page_zise =1)
+        public ActionResult Index(int page =1, int page_zise =10)
         {
             var dao = new UserDao();
             var list = dao.GetListUser(page, page_zise);
@@ -39,7 +39,7 @@ namespace OnlineShop.Areas.Admin.Controllers
                 long id = dao.Insert(user);
                 if (id > 0)
                 {
-                    return RedirectToAction("Index","Home");
+                    return RedirectToAction("Index","User");
                 }else if(id == 0)
                 {
                 ModelState.AddModelError("", "User is exist!");
@@ -71,6 +71,20 @@ namespace OnlineShop.Areas.Admin.Controllers
         {
           ModelState.AddModelError("", "Update user failed!");
         }
+      }
+      return View();
+    }
+    public ActionResult Delete(int id)
+    {
+      var dao = new UserDao();
+      bool ret = dao.Delete(id);
+      if (ret)
+      {
+        return RedirectToAction("Index", "User");
+      }
+      else
+      {
+        ModelState.AddModelError("", "Delete user failed!");
       }
       return View();
     }
