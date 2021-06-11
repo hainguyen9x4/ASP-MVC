@@ -12,10 +12,11 @@ namespace OnlineShop.Areas.Admin.Controllers
     public class UserController : BaseController
     {
         // GET: Admin/User
-        public ActionResult Index(int page =1, int page_zise =10)
+        public ActionResult Index(string searchString, int page =1, int page_zise =10)
         {
             var dao = new UserDao();
-            var list = dao.GetListUser(page, page_zise);
+            var list = dao.GetListUser(searchString, page, page_zise);
+            ViewBag.searchString = searchString;
             return View(list);
         }
         public ActionResult Edit(int id)
@@ -89,5 +90,5 @@ namespace OnlineShop.Areas.Admin.Controllers
       }
       return View();
     }
-  }
+    }
 }

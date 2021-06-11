@@ -14,6 +14,18 @@
             <div class="panel-heading">
                 Danh sách người dùng
             </div>
+            <!-- Topbar Search -->
+            @using (Html.BeginForm("Index","User",FormMethod.Get, new { @class = "d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"})) {
+                <div class="input-group">
+                    <input type="text" value="@ViewBag.searchString" class="form-control bg-light border-2 small" name="searchString" placeholder="Search user..."
+                           aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fas fa-search fa-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            }
             <div class="panel-body">
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover">
@@ -27,27 +39,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach(var item in Model) { 
-                            <tr id="row_@item.ID">
-                                <td>@item.ID</td>
-                                <td>@item.Name</td>
-                                <td>@item.Username</td>
-                                <td>@item.Email</td>
-                                <td>
-                                    <a href="/Admin/User/Edit/@item.ID">Edit</a>|
-                                    @*<a href="/Admin/User/Delete/@item.ID">Delete</a>*@
-                                    @Ajax.ActionLink("Delete", "Delete",new { id = item.ID }, new AjaxOptions
-                               {
-                                   Confirm = "Do you want to delete?",
-                                   OnComplete ="$('#row_"+item.ID+"').remove()",
-                                   HttpMethod ="Delete"
-                               });
-                                </td>
-                            </tr>
+                            @foreach (var item in Model)
+                            {
+                                <tr id="row_@item.ID">
+                                    <td>@item.ID</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.Username</td>
+                                    <td>@item.Email</td>
+                                    <td>
+                                        <a href="/Admin/User/Edit/@item.ID">Edit</a>|
+                                        @*<a href="/Admin/User/Delete/@item.ID">Delete</a>*@
+                                        @Ajax.ActionLink("Delete", "Delete", new { id = item.ID }, new AjaxOptions
+                                   {
+                                       Confirm = "Do you want to delete?",
+                                       OnComplete = "$('#row_" + item.ID + "').remove()",
+                                       HttpMethod = "Delete"
+                                   })
+                                    </td>
+                                </tr>
                             }
                         </tbody>
-                    </table> 
-                    @Html.PagedListPager(Model, page=> Url.Action("Index",new { page }))
+                    </table>
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.searchString }))
                 </div>
             </div>
         </div>
