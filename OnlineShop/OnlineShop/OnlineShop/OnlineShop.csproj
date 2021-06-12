@@ -3008,6 +3008,7 @@
     <Content Include="Areas\Assets\js\plugins\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
     <Content Include="Areas\Assets\js\plugins\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="Areas\Assets\js\plugins\ckeditor\skins\moono\readme.md" />
+    <Content Include="Areas\Admin\Views\Shared\_Navigation.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
