@@ -9,14 +9,18 @@
 @section footerScript{
     <script>
         $(document).ready(function () {
-            $('#btntxtAvatar').on('click',function(){
+            $('#btntxtAvatar').on('click', function () {
                 var finder = new CKFinder();
                 finder.selectActionFunction = function (url) {
                     $('#txtImage').val(url);
                 };
                 finder.popup();
             })
+
         })
+        var editor = CKEDITOR.replace('edtDetail', {
+            customConfig: '/Areas/Assets/js/plugins/ckeditor/config.js',
+        });
     </script>
     }
 @using (Html.BeginForm())
@@ -71,7 +75,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Detail, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Detail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.Detail, new { htmlAttributes = new { @class = "form-control" },id="edtDetail" })
                 @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger" })
             </div>
         </div>
