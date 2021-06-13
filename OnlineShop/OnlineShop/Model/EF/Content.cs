@@ -12,6 +12,7 @@ namespace Model.EF
         public long ID { get; set; }
 
         [StringLength(250)]
+        [Required]
         public string Name { get; set; }
 
         [StringLength(500)]
