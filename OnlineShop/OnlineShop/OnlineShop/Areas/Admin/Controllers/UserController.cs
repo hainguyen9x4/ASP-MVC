@@ -90,5 +90,15 @@ namespace OnlineShop.Areas.Admin.Controllers
       }
       return View();
     }
+    [HttpPost]
+    public JsonResult ChangeStatus(long id)
+    {
+      var dao = new UserDao();
+      var result = dao.ChangeStatus(id);
+      return Json(new
+      {
+        status = result
+      });
+    }
     }
 }

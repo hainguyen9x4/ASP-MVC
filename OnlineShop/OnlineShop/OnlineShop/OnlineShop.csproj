@@ -161,6 +161,7 @@
     <Content Include="Areas\Assets\img\undraw_profile_2.svg" />
     <Content Include="Areas\Assets\img\undraw_profile_3.svg" />
     <Content Include="Areas\Assets\img\undraw_rocket.svg" />
+    <Content Include="Areas\Assets\js\Controller\userController.js" />
     <Content Include="Areas\Assets\js\demo\chart-area-demo.js" />
     <Content Include="Areas\Assets\js\demo\chart-bar-demo.js" />
     <Content Include="Areas\Assets\js\demo\chart-pie-demo.js" />
