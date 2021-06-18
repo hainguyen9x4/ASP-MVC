@@ -1,5 +1,5 @@
 ﻿var user = {
-    init: function () {
+    init2: function () {
         user.registerEvents();
     },
     registerEvents: function () {
@@ -13,14 +13,19 @@
                 type: "POST",
                 data: { id: id },
                 success: function (response) {
-                    if (response.status == true) {
-                        btn.text('Enable');
+                    if (response.result) {
+                        if (response.status == true) {
+                            btn.text('Enable');
+                        } else {
+                            btn.text('Disable');
+                        }
                     } else {
-                        btn.text('Disable');
+                        alert("Can not change the status now!");
                     }
+
                 }
             });
         });
     }
 }
-user.init();
+user.init2();
