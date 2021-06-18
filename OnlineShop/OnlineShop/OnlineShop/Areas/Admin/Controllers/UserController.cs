@@ -40,13 +40,16 @@ namespace OnlineShop.Areas.Admin.Controllers
                 long id = dao.Insert(user);
                 if (id > 0)
                 {
+                    SetAlert("Add user success!", AlertType.SUCCESS);
                     return RedirectToAction("Index","User");
                 }else if(id == 0)
                 {
-                ModelState.AddModelError("", "User is exist!");
+                   SetAlert("Add user fail!", AlertType.ERROR);
+                   ModelState.AddModelError("", "User is exist!");
                  }
                 else
                 {
+                    SetAlert("Add user fail!", AlertType.ERROR);
                     ModelState.AddModelError("", "Add new user failed!");
                 }
             }
@@ -94,10 +97,18 @@ namespace OnlineShop.Areas.Admin.Controllers
     public JsonResult ChangeStatus(long id)
     {
       var dao = new UserDao();
-      var result = dao.ChangeStatus(id);
+      var currentUser = (UserLogin)Session[CommonConstant.USER_SESSION];
+      var sta = false;
+      var ret = false;
+      if (currentUser.Id != id)
+      {
+        sta = dao.ChangeStatus(id);
+        ret = true;
+      }
       return Json(new
       {
-        status = result
+        status = sta,
+        result = ret
       });
     }
     }

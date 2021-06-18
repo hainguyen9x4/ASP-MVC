@@ -38,7 +38,7 @@ namespace Model.EF
 
         [StringLength(20)]
         public string ModifyBy { get; set; }
-
+        [Required]
         public bool? Status { get; set; }
     }
 }

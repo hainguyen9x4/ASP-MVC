@@ -245,6 +245,12 @@
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    <!-- Notification area-->
+                    @if (TempData["AlertMessage"] != null)
+                    {
+        <div id="alertbox" class="alert @TempData["AlertType"] hide">
+            @TempData["AlertMessage"]
+        </div> <!-- End of Notification area-->}
                     @RenderBody()
                 </div>
                 <!-- /.container-fluid -->
@@ -285,7 +291,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    @Html.ActionLink("Logout", "Logout", "Login",null,new {@class="btn btn-secondary" })
+                    @Html.ActionLink("Logout", "Logout", "Login", null, new { @class = "btn btn-secondary" })
                 </div>
             </div>
         </div>
@@ -302,7 +308,8 @@
     <script src="/Areas/Assets/js/plugins/ckeditor/ckeditor.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="/Areas/Assets/js/sb-admin-2.min.js"></script>
-    @RenderSection("footerScript",required:false)
+    <script src="/Areas/Assets/js/sb-admin-2.js"></script>
+    @RenderSection("footerScript", required: false)
 </body>
 
 </html>
