@@ -74,10 +74,6 @@ namespace Model.EF
           .Property(e => e.Id)
           .IsUnicode(false);
 
-      modelBuilder.Entity<Menu>()
-          .Property(e => e.DisplayOrder)
-          .IsFixedLength();
-
       modelBuilder.Entity<Product>()
           .Property(e => e.Code)
           .IsUnicode(false);
