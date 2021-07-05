@@ -39,5 +39,23 @@ namespace OnlineShop.Controllers
       var model = new MenuDao().GetAllMenuActive(2);
       return PartialView(model);
     }
+    [ChildActionOnly]
+    public ActionResult ProductCategory()
+    {
+      var model = new ProductCategoryDao().GetAllCategoryActive();
+      return PartialView(model);
+    }
+    [ChildActionOnly]
+    public ActionResult Slider()
+    {
+      var model = new SlideDao().GetAllSlide();
+      return PartialView(model);
+    }
+    [ChildActionOnly]
+    public ActionResult Footer()
+    {
+      var model = new FooterDao().GetAllSlide();
+      return PartialView(model);
+    }
   }
 }

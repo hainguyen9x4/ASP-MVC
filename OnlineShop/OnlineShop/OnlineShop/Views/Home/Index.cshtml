@@ -3,7 +3,14 @@
     ViewBag.Title = "Index";
     Layout = "/Views/Shared/_Layout.cshtml";
 }
-
+@section Slider
+{
+    @{Html.RenderAction("Slider", "Home");}
+}
+@section ProductCategory
+{
+    @{Html.RenderAction("ProductCategory", "Home");}
+}
 <div class="main">
     <div class="content">
         <div class="content_top">

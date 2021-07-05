@@ -3106,6 +3106,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\MainMenu.cshtml" />
     <Content Include="Views\Home\TopMenu.cshtml" />
+    <Content Include="Views\Home\ProductCategory.cshtml" />
+    <Content Include="Views\Home\Slider.cshtml" />
+    <Content Include="Views\Home\Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
