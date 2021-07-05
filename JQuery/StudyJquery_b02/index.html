@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<title>Jquery</title>
+<script src="jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#btn01').click(function(){
+            alert('Button is clicked!');
+        });
+        $('#div01').html("width:"+$('#img01').width()+"height: "+$('img01').height());
+    });
+</script>
+<script>
+$(window).on('load',function(){
+    $('#btn01').click(function(){
+            alert('Button is clicked-Load!');
+        });
+    $('#div02').html("width:"+$('#img01').width()+"height: "+$('#img01').height());
+});
+</script>
+<body>
+
+<h1>This is a heading</h1>
+<p>This is a paragraph.</p>
+<div id="div01"></div>
+<div id="div02"></div>
+<button id="btn01">Click me</button>
+ <img id="img01" src="image01.jpg">
+</body>
+</html>
