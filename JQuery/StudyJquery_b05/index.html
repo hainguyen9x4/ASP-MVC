@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<title>Jquery</title>
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    .color1 {
+      background-color: Yellow;
+    }
+    </style>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script>
+    window.jQuery|| document.write("<script src='jquery-3.6.0.min.js'><\/script>");
+</script>
+<script>
+    $(document).ready(function(){
+        $('#btn01').click(function(){
+            //$('table tr:odd').css('background-color',"#dddddd");
+           // $('table tr:odd').addClass('color1');
+           // $('table tr:nth-child(odd)').css('background-color',"red");
+           //alert($('table tr').text());
+           //alert($('table tr').html());
+            $('table tr').each(function(){
+                //alert($(this).text());
+                if($(this).find('td:last').text().indexOf('Germany')!= -1){
+                    alert('search:'+$(this).text());
+                    $(this).css('background-color',"green");
+                }
+            });
+        })
+        
+    });
+</script>
+<body>
+<h1>This is a heading</h1>
+<p>This is a paragraph.</p>
+<button id="btn01">Click me</button>
+<table class="table">
+    <tr>
+      <th>Company</th>
+      <th>Contact</th>
+      <th>Country</th>
+    </tr>
+    <tr>
+      <td>Alfreds Futterkiste</td>
+      <td>Maria Anders</td>
+      <td>Germany</td>
+    </tr>
+    <tr>
+      <td>Centro comercial Moctezuma</td>
+      <td>Francisco Chang</td>
+      <td>Mexico</td>
+    </tr>
+    <tr>
+      <td>Ernst Handel</td>
+      <td>Roland Mendel</td>
+      <td>Austria</td>
+    </tr>
+  </table>
+</body>
+</html>
