@@ -10,10 +10,10 @@ namespace Model.EF
     public partial class Product
     {
         public long ID { get; set; }
-
+        [Required]
         [StringLength(250)]
         public string Name { get; set; }
-
+        [Required]
         [StringLength(20)]
         public string Code { get; set; }
 
@@ -25,15 +25,16 @@ namespace Model.EF
 
         [Column(TypeName = "xml")]
         public string MoreImage { get; set; }
-
+        [Required]
         public decimal? Price { get; set; }
 
         public decimal? PromationPrice { get; set; }
 
         public bool? IncludeVAT { get; set; }
-
+        [Required]
         public int Quanlity { get; set; }
-
+        [Required]
+        [Display(Name = "Category")]
         public long? CategoryID { get; set; }
 
         [Column(TypeName = "ntext")]

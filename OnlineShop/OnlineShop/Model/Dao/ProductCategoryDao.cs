@@ -23,6 +23,10 @@ namespace Model.Dao
     {
       return db.ProductCategories.OrderBy(x => x.DisplayOrder).ToPagedList(page, pagesize);
     }
+    public IEnumerable<ProductCategory> GetAllCategory()
+    {
+      return db.ProductCategories.ToList();
+    }
     public long Insert(ProductCategory data)
     {
       if (db.ProductCategories.SingleOrDefault(x => x.Name == data.Name) == null)
