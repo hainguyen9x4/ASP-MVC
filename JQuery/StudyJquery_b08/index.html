@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<title>Jquery</title>
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    .color1 {
+      background-color: Yellow;
+    }
+    </style>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script>
+    window.jQuery|| document.write("<script src='jquery-3.6.0.min.js'><\/script>");
+</script>
+<script>
+    $(document).ready(function(){
+        $('#btn01').click(function(){
+          //$('[title="title01"]').css('background-color',"red");
+          //$('.class02[title="title01"]').css('background-color',"red");
+          alert($('[title="title03"]').data('log'));
+        })
+        
+    });
+</script>
+<body>
+<h1>This is a heading</h1>
+<p>This is a paragraph.</p>
+<button id="btn01">Click me</button>
+<div class="class01" title="title01" style="background-color: blue">This is div01</div>
+<div class="class02" title="title01" >This is div02</div>
+<div class="class03" title="title03" data-log="HN113">This is div03</div>
+</body>
+</html>
