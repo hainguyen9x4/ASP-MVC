@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<title>Jquery</title>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script>
+    window.jQuery|| document.write("<script src='jquery-3.6.0.min.js'><\/script>");
+</script>
+<script>
+    $(document).ready(function(){
+        $('#btn01').click(function(){
+          // var rdchecked = $('input[type="radio"][name="gender"]:checked');
+          // if(rdchecked.length>0){
+          //   alert("Value is "+rdchecked.val());
+          // }else{
+          //   $('#pResult').text("Not gender is selected!")
+          // }
+
+          //CheckBox
+            var ckbox = $('input[type="checkbox"][name="language"]:checked');
+            if(ckbox.length>0){
+              var ret ='Language: ';
+              ckbox.each(function(index,element){
+                if(index%2==0)
+                ret+=$(element).val();
+              });
+              $('#pResult').html(ret);
+            }else{
+              $('#pResult').text("No is selected!")
+            }
+        })
+        
+    });
+</script>
+<body>
+  <input type="radio" name="gender" id="male" value="1">
+  <label for="male">Male</label><br>
+
+  <input type="radio" name="gender" id="female" value="0">
+  <label for="female">Female</label><br>
+
+  <input type="checkbox" value="C#" name="language">
+  <label>C#</label>
+  <input type="checkbox" value="Java" name="language">
+  <label>Java</label>
+  <input type="checkbox" value="JQuey" name="language">
+  <label>JQuey</label>
+  <br>
+
+  <button id="btn01">Confirm</button>
+  <p id="pResult"></p>
+
+</body>
+</html>
