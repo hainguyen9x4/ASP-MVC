@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<title>Jquery</title>
+<style>    
+    .color1 {
+      background-color: Yellow;
+    }
+    </style>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script>
+    window.jQuery|| document.write("<script src='jquery-3.6.0.min.js'><\/script>");
+</script>
+<script>
+    $(document).ready(function(){
+        $('#btn01').click(function(){
+          //$('p#lbl1').text('Button 01');
+
+          //Attr()
+          //$('.class01[title="title01"]').attr('data-id','HN123');
+          //alert($('.class01[title="title01"]').data('id'));
+          //alert($('.class01[title="title01"]').attr('data-id'));
+          //$('.class01[title="title01"]').attr('style','background-color:black');
+
+          //$('#link').attr('href','http://google.com');
+          //$('#link').text('Click to GG');
+
+          //Prop()
+          $('#check').attr('checked','checked');//checked
+          $('#check').removeAttr('checked');//unchecked
+
+          //$('#check').prop('checked','true');//checked
+          //$('#check').prop('checked','false');//checked
+        })
+        
+    });
+</script>
+<body>
+<h1>This is a heading</h1>
+<p>This is a paragraph.</p>
+<p id="lbl1"></p>
+<button id="btn01">Click me</button>
+<div class="class01" title="title01" style="background-color: blue">This is div01</div>
+<div class="class02" title="title01" >This is div02</div>
+<div class="class03" title="title03" data-log="HN113">This is div03</div>
+<a href="#" id="link">Link</a>
+<input id="check" value="33" type="checkbox" />
+</body>
+</html>
