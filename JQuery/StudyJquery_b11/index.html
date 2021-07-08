@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<title>Jquery</title>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script>
+    window.jQuery|| document.write("<script src='jquery-3.6.0.min.js'><\/script>");
+</script>
+<script>
+    $(document).ready(function(){
+        $('#btn01').on('click',function(){
+          var selected = $('#s1 option:selected');
+          if(selected.length >0){
+            alert("Selected value = "+selected.val());
+          }else{
+            $('#pResult').text("Not selected!");
+          }
+        })
+        $('#btn02').on('click',function(){
+          var selected = $('#s2 option:selected');
+          if(selected.length >0){
+            var ret ='language';
+            selected.each(function(){
+              ret+= $(this).val()+" |Text = "+$(this).text()+"<br/>";
+              if($(this).val()=='Java') return false;
+            });
+            $('#pResult').html(ret);
+            //alert("Selected value = "+selected.val());
+          }else{
+            $('#pResult').text("Not selected!");
+          }
+        })
+        
+    });
+</script>
+<body>
+<select id="s1">
+  <option >Select the language</option>
+  <option value="C#">C#</option>
+  <option value="Java">Java</option>
+  <option value="JQuery">JQuery</option>
+</select><br>
+<select id="s2" multiple>
+  <option >Select the language</option>
+  <option value="C#">C#</option>
+  <option value="Java">Java</option>
+  <option value="JQuery">JQuery</option>
+</select>
+  <button id="btn01">Confirm single</button><br/>
+  <button id="btn02">Confirm mutil</button>
+  <p id="pResult"></p>
+
+</body>
+</html>
