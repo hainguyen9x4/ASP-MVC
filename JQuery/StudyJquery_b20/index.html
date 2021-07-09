@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<title>Jquery</title>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script>
+    window.jQuery|| document.write("<script src='jquery-3.6.0.min.js'><\/script>");
+</script>
+<style>
+  .classColor{
+    background-color: grey;
+    color: red;
+  }
+</style>
+<script>
+    $(document).ready(function(){
+      $('img[src="help.png"]').mouseover(function(){
+        //var id = $(this).attr('id').replace('img','text');
+        $('#'+getId(this)).fadeIn(500);
+      }).mouseout(function(){
+        var id = $(this).attr('id').replace('img','text');
+        $('#'+getId(this)).fadeOut(500);
+      })
+    });
+function getId(helpIcon){
+  return $(helpIcon).attr('id').replace('img','text');
+}
+</script>
+<body>
+  <table>
+    <tr>
+      <td>
+        <label for="text01">FirstName</label><br>
+      </td>
+      <td>      
+        <input type="text" id="text01"><br>
+      </td>
+      <td>
+        <img src="help.png" id="imgHelpFirstName"  width="20" height="20">
+      </td>
+      <td>
+        <div id="textHelpFirstName" style="display:none">Please enter the first name</div>
+      </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="text02">LastName</label><br>
+        </td>
+      <td>        
+        <input type="text" id="text01"><br>
+      </td>
+      <td>
+        <img src="help.png" id="imgHelpLastName"  width="20" height="20">
+      </td>
+      <td>
+        <div id="textHelpLastName"style="display:none">Please enter the last name</div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="text03">Email</label><br>
+      </td>
+      <td>
+        <input type="text" id="text01"><br>
+      </td>
+      <td>
+        <img src="help.png" id="imgHelpEmail"  width="20" height="20">
+      </td>
+      <td>
+        <div id="textHelpEmail"style="display:none">Please enter the Email</div>
+      </td>
+    </tr>
+    </tr>
+  </table>
+
+
+
+
+<div id="ret"></div>
+</body>
+</html>
