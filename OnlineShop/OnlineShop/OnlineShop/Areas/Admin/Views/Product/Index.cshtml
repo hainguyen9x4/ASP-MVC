@@ -1,8 +1,10 @@
 ﻿@model PagedList.PagedList<Model.EF.Product>
 @using PagedList.Mvc;
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+  ViewBag.Title = "Index";
+  Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+  //List<Model.EF.ProductCategory> list = ViewBag.CategoryID.Items;
+  var list = (List<Model.EF.ProductCategory>)ViewBag.CategoryID.Items;
 }
 
 <h2>Index</h2>
@@ -44,7 +46,8 @@
                                 <td>@item.Avatar</td>
                                 <td>@item.Price</td>
                                 <td>@item.Quanlity</td>
-                                <td>@item.CategoryID</td>
+                                @*<td>@(list[Convert.ToInt32(item.CategoryID.Value-1)].Name)</td>*@
+                                <td>@(list.SingleOrDefault(x=>x.ID== item.CategoryID).Name)</td>
                                 <td>@(item.CreatedDate != null ? item.CreatedDate.Value.ToString("dd-MM-yyyy") : "n/a")</td>
                                 <td>@item.ViewCount</td>
                                 <td>

@@ -16,6 +16,7 @@ namespace OnlineShop.Areas.Admin.Controllers
     {
       var dao = new ProductDao();
       var list = dao.GetAllProduct(page, page_zise);
+      SetviewBag();
       return View(list);
     }
     [HttpGet]
