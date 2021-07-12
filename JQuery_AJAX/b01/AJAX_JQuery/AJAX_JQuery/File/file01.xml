@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<employees>
+  <employee>
+    <Id>MS01</Id>
+    <Name>HaiNguyen</Name>
+    <Age>22</Age>
+    <Email>Hainguyen9x4@gmail.com</Email>
+  </employee>
+  <employee>
+    <Id>MS02</Id>
+    <Name>VanNGuyen</Name>
+    <Age>23</Age>
+    <Email>VanNGuyen@gmail.com</Email>
+  </employee>
+  <employee>
+    <Id>MS03</Id>
+    <Name>TuanNguyen</Name>
+    <Age>24</Age>
+    <Email>TuanNguyen@gmail.com</Email>
+  </employee>
+</employees>
