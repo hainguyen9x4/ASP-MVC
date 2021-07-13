@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<title>Jquery</title>
+<link href="css/styles.css" rel="stylesheet" />
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script>
+    window.jQuery|| document.write("<script src='jquery-3.6.0.min.js'><\/script>");
+</script>
+<script>
+    $(document).ready(function(){
+        //Contains
+        console.log($.contains(document.body,$('#iddiv')[0]));
+        //Each
+        $('#ul01 li').each(function(i,e){
+            console.log(i+" "+$(e).text());
+        })
+        var obj1 = {
+            name:"hai",
+            age:"13",
+            email:"@gmail",
+            work:{
+                work01:"Br",
+                work02:"SE",
+                work03:"Ex",
+            }
+        }
+        var obj2 = {
+            name:"hai2",
+            age:"13",
+            email:"@gmail",
+            work:{
+                work01:"Br",
+                work02:"SE",
+                work03:"Ex",
+                work04:"SSE",
+            }
+        }
+       // console.log($.extend(obj1,obj2));
+       // console.log(obj1);
+        // console.log("----------------------");
+        // var temp = $.extend({},obj1,obj2);
+        // console.log("--------obj1--------------");
+        // console.log(obj1);
+        // console.log(temp);
+         console.log("--------extend(false--------------");
+         console.log($.extend(true,obj1,obj2));
+         console.log("--------obj1--------------");
+         console.log(obj1);
+
+    });
+
+
+</script>
+<body>
+    <form action="" id="formA" style="border: 1;"></form>
+    <div id="iddiv" class="boxA"></div>
+    <ul id="ul01">
+        <li>li01</li>
+        <li>li02</li>
+        <li>li03</li>
+        <li>li04</li>
+        <li>li05</li>
+    </ul>
+</body>
+</html>
