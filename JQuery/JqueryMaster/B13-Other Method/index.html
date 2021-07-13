@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<title>Jquery</title>
+<link href="css/styles.css" rel="stylesheet" />
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script>
+    window.jQuery|| document.write("<script src='jquery-3.6.0.min.js'><\/script>");
+</script>
+<script>
+    $(document).ready(function(){
+        //JSON
+        var jsonStr = '{"Name":"Hainguyen","Age":13}';
+        $('#btn01').on('click',function(){
+            console.log($.parseJSON(jsonStr));
+            console.log($.type($.parseJSON(jsonStr)));
+            console.log(JSON.parse(jsonStr));
+            console.log(typeof(JSON.parse(jsonStr)));
+            console.log("---------------------type");
+            console.log($.type(JSON.parse(jsonStr)));
+            //
+            var xmlVar ="<Employee><Name>Hainguyen</Name><Age>13</Age></Employee>";
+            console.log($.parseXML(xmlVar));
+            var str ="  tets  ";
+            console.log(str);
+            var newtext = $.trim(str);
+            console.log(newtext);
+        });
+    });
+
+
+</script>
+<body>
+    <form action="" id="formA" style="border: 1;"></form>
+    <div id="iddiv" class="boxA"></div>
+    <ul id="ul01">
+        <li>li01</li>
+        <li>li02</li>
+        <li>li03</li>
+        <li>li04</li>
+        <li>li05</li>
+    </ul>
+    <button id="btn01"> Process</button>
+</body>
+</html>
