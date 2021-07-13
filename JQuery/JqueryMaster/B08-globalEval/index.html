@@ -50,9 +50,13 @@
          function test01(){
              var tmp01 ="nguyen";
              $.globalEval('var globalVar = "This is global var"');
-             console.log(globalVar);
+             //console.log(globalVar);
          }
          console.log("--------globalVar--------------");
+        console.log(globalVar);
+        globalVar = "123";
+        test01();
+        console.log("--------globalVar after--------------");
         console.log(globalVar);
     });
 
