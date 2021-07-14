@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<title>Jquery</title>
+<link href="css/styles.css" rel="stylesheet" />
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script>
+    window.jQuery|| document.write("<script src='jquery-3.6.0.min.js'><\/script>");
+</script>
+<style>
+    .bg01{
+        background-color: gray;
+    }
+</style>
+<script>
+    $(document).ready(function(){
+        $('#btn01').on('click',function(){
+            $('#formA :first').addClass('bg01');
+            $('#formA :last').addClass('bg01');
+        });
+    });
+
+
+</script>
+<body>
+    <div id="formA" style="border: 1;">
+        <div id="iddiv1" class="class01" >div1 tag</div>
+        <div id="iddiv2" >div2 tag</div>
+        <div id="iddiv3" >div3 tag</div>
+        <span id="idspan1">Span tag1</span>
+        <span id="idspan2">Span tag2</span>
+        <span id="idspan3">Span tag3</span>
+        <ul id="ul01">
+            <li>li01</li>
+            <li>li02</li>
+            <li>li03</li>
+            <li>li04</li>
+            <li>li05</li>
+        </ul>
+</div>
+    <button id="btn01"> Process</button>
+</body>
+</html>
