@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<title>Jquery</title>
+<link href="css/styles.css" rel="stylesheet" />
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script>
+    window.jQuery|| document.write("<script src='jquery-3.6.0.min.js'><\/script>");
+</script>
+<style>
+    .bg01{
+        background-color: gray;
+    }
+    .bg02{
+        background-color: orange;
+    }
+</style>
+<script>
+    $(document).ready(function(){
+        $('#btn01').on('click',function(){
+        //.eq()
+           /* console.log($('#boxA >*').eq(0));
+            console.log($('#boxA >*').eq(-1));
+            console.log($('#boxA >*').eq(2));*/
+        //.filter
+           /* console.log($('#boxA >*').filter('p.item1'));
+            console.log($('#boxA >*').filter(function(i){
+                return (i%2==0 && $(this).is('p')|| $(this).is('div'));
+            }));*/
+         //.first-.last   
+         /*console.log($('#boxA >*').first());
+         console.log($('#boxA >*').last());*/
+         //.has()
+         //console.log('-----------------');
+         //console.log($('#boxA >*').has('span'));// kiem tra the con nao co the span o ben trong
+         //.map()
+         /*console.log($('#boxA >*').map(function(i,e){
+             return $(e).is('p')?$(this).text():$.noop();
+         }))*/
+         //.not()
+         //console.log($('#boxA >*').not('p'));
+         /*console.log($('#boxA >*').not(function(i,e){
+             return $(this).is('p');//  se tra ve nhung tag ko phai laf p vif dang la ham .not()
+         }));*/
+         //.slice(start,end): lay ra 1 mang tu 1 mang
+         //.
+        });
+    });
+
+</script>
+<body>
+    <div id="boxA" class="classA">
+        <p class="item1">Html</p>
+        <p class="item2">Jquery</p>
+        <p class="item3">CSS</p>
+        <div class="item4"><span>Span tag</span>C#</div>
+        <span class="item5">Node JS</span>
+    </div>
+    <button id="btn01">Process</button>
+    <div id="ret"></div>
+</body>
+</html>
