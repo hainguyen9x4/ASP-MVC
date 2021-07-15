@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<title>Jquery</title>
+<link href="css/styles.css" rel="stylesheet" />
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js"></script>
+<script>
+    window.jQuery|| document.write("<script src='jquery-3.6.0.min.js'><\/script>");
+</script>
+<style>
+    .bg01{
+        background-color: gray;
+    }
+</style>
+<script>
+    $(document).ready(function(){
+        $('#btn01').on('click',function(){
+            //:input
+            //$('#appform :input').addClass('bg01');
+            //:text
+            //$('#appform :text').addClass('bg01');
+            //$('#appform :text[name="user"]').addClass('bg01');
+            //$('#ret').html($('#appform :text[name="user"]').val());
+            //:radio
+            //$('#ret').html($('#appform :radio[name="skill"]:checked').val());
+            //select
+            //$('#ret').html($('#appform select[name="mobile"]').val());
+            //select multi
+            console.log("--------------------");
+            var mobile2 = $('#appform select[name="mobile2"]');
+            var str='';
+            $(mobile2).addClass('bg01').each(function(i,e){
+                $('#ret').append($(e).val()+"<br/>");
+            });
+            //$('#ret').html(str);
+            //CheckBox
+            console.log("--------------checkbox-------------------------");
+            var checks = $('#appform :checkbox[name="programming"]:checked');
+            if(checks.length>0){
+                $(checks).each(function(i,e){
+                    console.log($(e).val());
+                })
+            }
+
+        });
+         //Check all check box
+        $('#checkAll').click(function(){
+             CheckAll()
+            })
+        $('#unCheckAll').click(function(){
+            UncheckAll()
+        })
+    });
+    function CheckAll(){
+            var lschecks = $('#appform :checkbox[name="programming"]');
+            $(lschecks).each(function(){
+               // $(this).attr("checked","checked");
+               $(this).prop("checked", true);
+            })
+        }
+    function UncheckAll(){
+            var lschecks = $('#appform :checkbox[name="programming"]:checked');
+            $(lschecks).each(function(){
+                //$(this).removeAttr("checked");
+                $(this).prop("checked",false);
+            })
+        }
+
+</script>
+<body>
+    <form action="" name="appform" id="appform" enctype="multipart/form-data" class="boxA">
+        <div>
+            Programming:
+            <input type="checkbox" name="programming" value="C#">C#
+            <input type="checkbox" name="programming" value="Java">HTML
+            <input type="checkbox" name="programming" value="JS">JS
+            <br/>
+        </div>
+    <div>
+        UserName:
+        <input type="text" name="user" id="user" class="" value="Hainguyen"/><br/>
+    </div>
+    <div>
+        Password: 
+        <input type="password" name="pass" id="pass" class="" value="123456"/><br/>
+    </div>
+    <div>
+        File Upload:
+        <input type="file" name="input">
+    </div>
+    <div>
+        Selector:
+        <select name="mobile">
+            <option value="nokia">nokia</option>
+            <option value="xiaomi">Xiaomi</option>
+            <option value="Samsung">Samsung</option>
+            <option value="Apple">Apple</option>
+        </select>
+    </div>
+    <div>
+        Selector multi:
+        <select name="mobile2" multiple="multiple">
+            <option value="nokia">nokia</option>
+            <option value="xiaomi">Xiaomi</option>
+            <option value="Samsung">Samsung</option>
+            <option value="Apple">Apple</option>
+        </select>
+    </div>
+    <div>
+        Radio Group:
+        <input type="radio" name="skill" value="html"/>HTML
+        <input type="radio" name="skill" value="css"/>CSS
+        <input type="radio" name="skill" value="java">Java
+    </div>
+    <div>
+        Button:
+        <input type="submit" name="btnSubmit" value="Submit button"/>
+        <input type="reset" name="btnReset" value="Reset button"/>
+    </div>
+    </form>
+    <input type="submit" id="checkAll" value="Check all">
+    <input type="submit" id="unCheckAll" value="Uncheck all">
+    <button id="btn01"> Process</button>
+    <button id="btn02"> Process2</button>
+    <div id="ret"></div>
+</body>
+</html>
