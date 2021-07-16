@@ -14,37 +14,25 @@
 <script>
     $(document).ready(function(){
         $('#btn01').on('click',function(){
-            //.val()
-            /*console.log("-----text---------");
-            console.log($('#appform :text[name="user"]').val());
-            console.log("-------file-------");
-            console.log($('#appform :file[name="input"]').val());
-            console.log("----select----------");
-            console.log($('#appform select[name="mobile"]').val());
-            console.log("-------select mutil-------");
-            console.log($('#appform select[name="mobile2"]').val());
-            console.log("-----radio---------");
-            console.log($('#appform :radio[name="skill"]:checked').val());
-            console.log("------check box--------");
-            $('#appform :checkbox[name="programming"]:checked').each(function(i,e){
-                console.log($(e).val());
-            });*/
-            //.val(value)-set value to form element
-            console.log("--------------");
-            $('#appform :text[name="user"]').val("xin chao");
-            console.log("----select----------");
-            $('#appform select[name="mobile"]').val("xiaomi");
-            console.log("-------select mutil-------");
-            $('#appform select[name="mobile2"]').val(["xiaomi","nokia"]);
-            console.log("-----radio---------");
-            $('#appform :radio[name="skill"][value="css"]').prop("checked",true);
-            console.log("------check box--------");
-            $('#appform :checkbox[name="programming"]').val(["Java","C#"])
+            //.css()
+            //console.log($('#appform').css("border"));//lay ra
+            //console.log($('#appform').css(["border","background-color","padding","width"]));//lay ra nhieu
+            //$('#appform').css("border","yellow")
+            //$('#appform').css("width","22px")
+            /*$('#appform >*').css("background-color",function(i,e){
+                if(i%2==0) return "red"; else return "blue";
+            })*/
+            $('#appform').css({
+                width:"500px",
+                padding:0,
+                border:"blue 2px solid"
+            })
         });
     });
 </script>
 <body>
-    <form action="" name="appform" id="appform" enctype="multipart/form-data" class="boxA">
+    <center>
+    <form action="" name="appform" id="appform" enctype="multipart/form-data" class="boxA" style="padding: 10px;width: 600px; border: red 2px solid; background-color: seashell;">
         <div>
             Programming:
             <input type="checkbox" name="programming" value="C#">C#
@@ -89,10 +77,9 @@
         <input type="radio" name="skill" value="java">Java
     </div>
     </form>
-    <input type="submit" id="checkAll" value="Check all">
-    <input type="submit" id="unCheckAll" value="Uncheck all">
     <button id="btn01"> Process</button>
     <button id="btn02"> Process2</button>
     <div id="ret"></div>
+</center>
 </body>
 </html>
