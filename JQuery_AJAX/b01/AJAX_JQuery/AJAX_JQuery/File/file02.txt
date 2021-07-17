@@ -1,6 +1,0 @@
-﻿{
-"Name":"hainguyen",
-"Name2":"hainguyen1",
-"Name3":"hainguyen2",
-"Name4":"hainguyen3"
-}
