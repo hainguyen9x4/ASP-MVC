@@ -8,8 +8,10 @@
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/themes/base/jquery-ui.min.css">
     <!-- jQuery library -->
     <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="js/bootstrap.min.js"></script>
     <style>
@@ -20,7 +22,7 @@
         .form-background{
             background-color: rgb(9, 207, 92);
             
-            margin-top: 100px;
+            margin-top: 70px;
             margin-bottom:10px;
             padding-top: 10px;
         }
@@ -35,22 +37,32 @@
             text-align: right;
         }
         .btn-register{
-            padding-top: 12px 38px;
+            padding-top: 12px 30px;
             font-size: 18px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            background-color: #F0BCD4;
-            color: white;
-            border: none;
-            outline: none;
             display: table;
-            cursor: pointer;
-            margin: 15px auto 31px;
+            margin: 15px auto 1px;
         }
         .user-register{
             text-align: center;
         }
     </style>
+<script>
+
+    $(document).ready(function(){
+        $('#select-avatar').change(function(){
+            $('#avatar-link').html($('#select-avatar').val());
+        });
+       $('.mycalender[name="birthday"]').datepicker({
+            changeYear:true,
+            changeMonth:true,
+            showAnim: 'fold',
+            inline: true,
+            yearRange:'1950:2015'
+        });
+    });
+</script>
 </head>
 <body>
 <div class="container-fluid bg01">
@@ -81,13 +93,27 @@
                     </div>
                     </div>
                     <div class="form-group">
+                        <div class="col-sm-12 col-md-12 col-lg-12 form-item" >
+                            <label class="btn btn-primary" >
+                                <i>Select Avatar</i><input type="file" style="display: none;" name="avatar" id="select-avatar">
+                            </label>
+                            <span id="avatar-link"></span>
+                            <p class="tex-danger"></p>
+                        </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12 col-md-12 col-lg-12 form-item" >
+                                <input  name="birthday" class="mycalender form-control" placeholder="Birthday">
+                            </div>
+                            </div>
+                    <div class="form-group">
                         <div class="col-sm-12 col-md-12 col-lg-12 form-item">
                             <a href="#">Reset</a>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12 col-md-12 col-lg-12 form-item">
-                            <input type="button" name="submit" class="btn-register" value="Register">
+                            <input type="button" name="submit" class="btn btn-primary btn-register" value="Register">
                         </div>
                     </div>
 
