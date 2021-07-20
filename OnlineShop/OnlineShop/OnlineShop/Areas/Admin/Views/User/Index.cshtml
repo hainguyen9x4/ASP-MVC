@@ -53,7 +53,7 @@
                                     <td>@item.Name</td>
                                     <td>@item.Username</td>
                                     <td>
-                                        <a href="#" class="btnx-active" data-id="@item.ID">@((bool)item.Status?"Enable":"Disable")</a>
+                                        <a href="#" class="btnx-active" data-id="@item.ID">@(item.Status.HasValue?(((bool)item.Status?"Enable": "Disable")):"Disable")</a>
                                     </td>
                                     <td>@item.Email</td>
                                     <td>
