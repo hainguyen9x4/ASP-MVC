@@ -248,9 +248,9 @@
                     <!-- Notification area-->
                     @if (TempData["AlertMessage"] != null)
                     {
-        <div id="alertbox" class="alert @TempData["AlertType"] hide">
-            @TempData["AlertMessage"]
-        </div> <!-- End of Notification area-->}
+                        <div id="alertbox" class="alert @TempData["AlertType"] hide">
+                            @TempData["AlertMessage"]
+                        </div> <!-- End of Notification area-->}
                     @RenderBody()
                 </div>
                 <!-- /.container-fluid -->
@@ -310,6 +310,7 @@
     <script src="/Areas/Assets/js/sb-admin-2.min.js"></script>
     <script src="/Areas/Assets/js/sb-admin-2.js"></script>
     @RenderSection("footerScript", required: false)
+    @RenderSection("uploadeImg", required: false)
 </body>
 
 </html>

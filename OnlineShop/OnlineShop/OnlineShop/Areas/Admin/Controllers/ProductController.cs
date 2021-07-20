@@ -73,5 +73,10 @@ namespace OnlineShop.Areas.Admin.Controllers
       }
       return View();
     }
+    public string UploadImage(HttpPostedFileBase file)
+    {
+      file.SaveAs(Server.MapPath("~/Content/images/" + file.FileName));
+      return "/Content/images/" + file.FileName;
+    }
   }
 }

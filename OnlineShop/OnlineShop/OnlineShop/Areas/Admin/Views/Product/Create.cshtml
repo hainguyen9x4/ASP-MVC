@@ -4,7 +4,43 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
 }
+@section uploadeImg{
+    <script>
+        $(document).ready(function () {
+            $('#btn-uploadImg').click(function () {
+                $('#dlgbox').trigger('click');
+            })
+            $('#dlgbox').change(function () {
+                console.log($('#dlgbox').val());
+                //$('#Avatar').attr('value', $('#dlgbox').val());
+                if (window.FormData !== undefined) {
+                    //lay du lieu tren upload file
+                    var fileUpload = $('#dlgbox').get(0);
+                    var file = fileUpload.files;
 
+                    console.log("file--------");
+                    console.log(file);
+                    var formdata = new FormData();
+                    formdata.append('file', file[0]);
+                    $.ajax({
+                        type:'POST',
+                        url:'/Product/UploadImage',
+                        contentType: false,
+                        processData: false,
+                        data: formdata,
+                        success: function (urlImg) {
+                            $('#Avatar').attr('value', urlImg);
+                            $('#selected-img').attr('src', urlImg);
+                        },
+                        error: function (err) {
+
+                        }
+                    })
+                }
+            })
+        })
+    </script>
+}
 <h2>Index</h2>
 
 @using (Html.BeginForm())
@@ -44,6 +80,11 @@
             <div class="col-md-10">
                 @Html.TextBoxFor(model => model.Avatar, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Avatar, "", new { @class = "text-danger" })
+                <input type="file" id="dlgbox" style="display:none" accept=".png,.jpg"/>
+                <button type="button" class="btn btn-success" id="btn-uploadImg">...</button>
+                <div>
+                    <img id="selected-img" />
+                </div>
             </div>
         </div>
 
@@ -138,7 +179,7 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-2">
-                <button type="submit" value="Create" class="btn btn-lg btn-block btn-success">Create</button>
+                <button type="submit" value="Create" class="btn btn-lg btn-block btn-success" id="btnCreate">Create</button>
             </div>
         </div>
     </div>
