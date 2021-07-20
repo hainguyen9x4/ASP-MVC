@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resgister </title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/themes/base/jquery-ui.min.css">
+    <!-- jQuery library -->
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+        .bg01{
+            background-color: rgb(149, 207, 240);
+            min-height: 700px;
+        }
+        #icon-home{
+            color: yellow;
+            font-size: 15px;
+        }
+    </style>
+<script>
+
+    $(document).ready(function(){
+        $('#select-avatar').change(function(){
+            $('#avatar-link').html($('#select-avatar').val());
+        });
+       $('.mycalender[name="birthday"]').datepicker({
+            changeYear:true,
+            changeMonth:true,
+            showAnim: 'fold',
+            inline: true,
+            yearRange:'1950:2015'
+        });
+    });
+</script>
+</head>
+<body>
+<div class="container-fluid bg01">
+        <button class="btn btn-primary">
+            <span class="glyphicon glyphicon-home" id="icon-home"></span> <span style="color: yellow; font-weight: bold;"> Home</span>
+        </button>
+        <div class="jumbotron">
+            <h1>THis is H1 content</h1>
+            <h2>THis is H2 content</h2>
+            <h3>Bootstrap’s .button styles can be applied to other elements, such as <label>s, to provide checkbox or radio style button toggling. Add data-toggle="buttons" to a .btn-group containing those modified buttons to enable their toggling behavior via JavaScript and add .btn-group-toggle to style the <input>s within your buttons. Note that you can create single</h3>
+        </div>
+</div>
+</body>
+</html>
