@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resgister </title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/themes/base/jquery-ui.min.css">
+    <!-- jQuery library -->
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+        .bg01{
+            background-color: rgb(149, 207, 240);
+            min-height: 700px;
+        }
+        .bg02{
+            background-color: rgb(255, 255, 255);
+            min-height: 100px;
+        }
+        .container{
+            padding-top: 50px;
+        }
+        .form-item{
+            padding-bottom: 10px;
+        }
+        .block-image{
+            margin: 15px;
+            padding-top: 20px;
+        }
+        .modal-content{
+            width: 90%;
+            text-align: center;
+            margin: auto;
+        }
+    </style>
+<script>
+
+    $(document).ready(function(){
+
+    });
+</script>
+</head>
+<body>
+    <section>
+        <div class="container">
+            <button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Click here</button>
+        </div>
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-5 col-lg-5 block-image">
+                            <img src="img/contact.jpg" alt="Contact">
+                        </div>
+                        <div class="col-md-6 col-lg-6 block-contact">
+                            <h3>Contact us</h3>
+                            <form action="">
+                                    <div class="form-group">
+                                        <div class="col-sm-12 col-md-12 col-lg-12 form-item">
+                                            <input type="text" name="name" placeholder="Your name" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">    
+                                        <div class="col-sm-12 col-md-12 col-lg-12 form-item">
+                                            <input type="text" name="email" placeholder="Email" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">    
+                                        <div class="col-sm-12 col-md-12 col-lg-12 form-item">
+                                            <input type="text" name="phone" placeholder="Phone number" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">    
+                                        <div class="col-sm-12 col-md-12 col-lg-12 form-item">
+                                            <textarea type="text" name="content"  cols="20" rows="4" class="form-control" placeholder="Enter the content"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">    
+                                        <div class="col-sm-2 col-md-12 col-lg-12 form-item">
+                                            <input type="button" name="btnSubmit" class="btn btn-success pull-left" value="Submit">
+                                        </div>
+                                    </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="pull-left">
+                        <span>Call: 02311836</span>
+                    </div>
+                    <div class="pull-right">
+                        <span>Email: support@gmail.com.vn</span>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>
