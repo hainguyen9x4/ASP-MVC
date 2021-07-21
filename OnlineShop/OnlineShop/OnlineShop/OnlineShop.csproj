@@ -164,6 +164,7 @@
     <Content Include="Areas\Assets\img\undraw_profile_2.svg" />
     <Content Include="Areas\Assets\img\undraw_profile_3.svg" />
     <Content Include="Areas\Assets\img\undraw_rocket.svg" />
+    <Content Include="Areas\Assets\js\Controller\productController.js" />
     <Content Include="Areas\Assets\js\Controller\userController.js" />
     <Content Include="Areas\Assets\js\demo\chart-area-demo.js" />
     <Content Include="Areas\Assets\js\demo\chart-bar-demo.js" />
@@ -2860,6 +2861,17 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\bkav-virut.png" />
+    <Content Include="Content\images\camera-canon.png" />
+    <Content Include="Content\images\del3421.png" />
+    <Content Include="Content\images\feature-pic1.jpg" />
+    <Content Include="Content\images\feature-pic2.jpg" />
+    <Content Include="Content\images\feature-pic3.jpg" />
+    <Content Include="Content\images\feature-pic4.jpg" />
+    <Content Include="Content\images\loa-sony.png" />
+    <Content Include="Content\images\new-pic1.jpg" />
+    <Content Include="Content\images\new-pic4.jpg" />
+    <Content Include="Content\images\office365.jpg" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -3086,6 +3098,7 @@
     <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Slide\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Slide\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3122,7 +3135,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
-    <Folder Include="Content\images\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

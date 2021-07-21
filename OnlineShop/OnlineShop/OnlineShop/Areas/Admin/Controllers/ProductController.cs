@@ -19,6 +19,12 @@ namespace OnlineShop.Areas.Admin.Controllers
       SetviewBag();
       return View(list);
     }
+    public ActionResult Edit(long id)
+    {
+      var user = new ProductDao().GetProductFromID(id);
+      SetviewBag(user.CategoryID);
+      return View(user);
+    }
     [HttpGet]
     public ActionResult Create()
     {
@@ -77,6 +83,27 @@ namespace OnlineShop.Areas.Admin.Controllers
     {
       file.SaveAs(Server.MapPath("~/Content/images/" + file.FileName));
       return "/Content/images/" + file.FileName;
+    }
+    [HttpPost]
+    public ActionResult Edit(Product data)
+    {
+      if (ModelState.IsValid)
+      {
+        var dao = new ProductDao();
+        var user_session = Session.SessionID;
+        var currentUser = (UserLogin)Session[CommonConstant.USER_SESSION];
+        data.ModifyBy = currentUser.UserName;
+        bool ret = dao.Update(data);
+        if (ret)
+        {
+          return RedirectToAction("Index", "Product");
+        }
+        else
+        {
+          ModelState.AddModelError("", "Update Product failed!");
+        }
+      }
+      return View();
     }
   }
 }

@@ -29,6 +29,10 @@ namespace Model.Dao
       }
       else return 0;
     }
+    public Product GetProductFromID(long id)
+    {
+      return db.Products.Find(id);
+    }
     public bool Delete(long id)
     {
       if (db.Products.SingleOrDefault(x => x.ID == id) != null)
@@ -39,6 +43,41 @@ namespace Model.Dao
         return true;
       }
       else return false;
+    }
+    public bool Update(Product entity)
+    {
+      try
+      {
+        var user = db.Products.Find(entity.ID);
+        if (!String.IsNullOrEmpty(entity.Name))
+        {
+          user.Name = entity.Name;
+        }
+        if (!String.IsNullOrEmpty(entity.Code))
+        {
+          user.Code = entity.Code;
+        }
+        user.Description = entity.Description;
+        user.Avatar = entity.Avatar;
+        if(entity.Price != null)
+        {
+          user.Price = entity.Price;
+        }
+        if (user.Quanlity >=0)
+        {
+          user.Quanlity = entity.Quanlity;
+        }
+        user.CategoryID = entity.CategoryID;
+        user.ModifyBy = entity.ModifyBy;
+        user.ModifyDate = DateTime.Now;
+        db.SaveChanges();
+        return true;
+      }
+      catch (Exception ex)
+      {
+        //Write log
+        return false;
+      }
     }
   }
 }
