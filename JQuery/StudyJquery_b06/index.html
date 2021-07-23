@@ -28,8 +28,20 @@
           //$('.class01').css('background-color','yellow');
           //$('.class02 .sub-class02').css('background-color','green');// truy cap kieu cây
           //$('span.small').css('background-color','blue');//lay ra tag co class small
-          $('.class04').filter('.sub-class04').css('background-color','blue');
-          $('.class02').find('.sub-class02').css('background-color','blue');
+          //$('.class04').filter('.sub-class04').css('background-color','blue');
+          //$('.class02').find('.sub-class02').css('background-color','blue');
+          //
+          // console.log($('.class01.class01_1').data('kcs'));
+          // $('.class01.class01_1').data('kcs',"haichanged");
+          // console.log($('.class01.class01_1').data('kcs'));
+          // console.log('---------------------');
+          // console.log($('.class01.class01_1').attr('data-kcs'));
+          // console.log('--------------------s-');
+          // $('.class01.class01_1').attr('data-kcs','attr');
+          // console.log($('.class01.class01_1').attr('data-kcs'));
+          // console.log($('.class01.class01_1').data('kcs'));
+          //$('.class01~.class02:first').css('background-color','red');
+
         })
         
     });
@@ -38,8 +50,24 @@
 <h1>This is a heading</h1>
 <p>This is a paragraph.</p>
 <button id="btn01">Click me</button>
-<div class="class01">This is div with class01</div>
-<div class="class02">This is div with class02
+<div class="class01 class01_1" data-id="1193" data-kcs="hai">
+  This is div with class01
+  <div class="class01_1">Sub class of This is div with class01
+    <div> TETS</div>
+    <div> TETS</div>
+    <div> TETS</div>
+    <div> TETS</div>
+  </div>
+  <div> TETS2</div>
+  <div> TETS2</div>
+</div>
+<div class="class02">This is div with class02 1
+  <div class="sub-class02">This is sub-class02</div>
+</div>
+<div class="class02">This is div with class02 2 
+  <div class="sub-class02">This is sub-class02</div>
+</div>
+<div class="class02">This is div with class02 3
   <div class="sub-class02">This is sub-class02</div>
 </div>
 <div class="class04 sub-class04">Tét filter

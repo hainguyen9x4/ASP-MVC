@@ -6,8 +6,9 @@
     window.jQuery|| document.write("<script src='jquery-3.6.0.min.js'><\/script>");
 </script>
 <script>
+
     $(document).ready(function(){
-       var employeeJsonList = [{
+      var employeeJsonList = [{
          "FirstName":"Hai",
          "LastName":"Nguyen",
          "Email":"Hai@gmail.com"
@@ -23,9 +24,29 @@
          "Email":"Van@gmail.com"
        }
       ]
+      var json = {
+    ProductID:"001",
+    Name1:"Laptop",
+    Name2:"Monitor",
+    Price1:10,
+    Price2:12,
+    Group:2
+      }
+      $('#btnClick').click(function(){
+
       $.each($(employeeJsonList),function(index, item){
       alert(item.FirstName);
+      })
     })
+    $('#testJson').click(function(){
+        console.log('-------json---------');
+        console.log(JSON.stringify(json));
+        console.log(typeof(JSON.stringify(json)));
+        console.log('-------string---------');
+        var jsonstr = JSON.stringify(json);
+        console.log(JSON.parse(jsonstr));
+        console.log(typeof(JSON.parse(jsonstr)));
+      })
     });
 
 </script>
@@ -44,6 +65,8 @@
 </select>
   <button id="btn01">Confirm single</button><br/>
   <button id="btn02">Confirm mutil</button>
+  <button id="btnClick">Click</button>
+  <button id="testJson">TestJson</button>
   <p id="pResult"></p>
 
 </body>

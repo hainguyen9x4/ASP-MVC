@@ -27,8 +27,55 @@
             }else{
               $('#pResult').text("No is selected!")
             }
+            //console.log($('input[name="gender"]:checked').val());
+            $('input[name="gender"]#female').attr('checked','checked');
+            //console.log($('input[name="gender"]:checked').attr('checked'));
+            //console.log($('input[name="gender"]#male').prop('checked'));
+            //
+            console.log($('input[name="language"]:checked'));
+            $('input[name="language"]').each(function(i,e){
+              console.log(i+ " "+$(e).val());
+              
+              $(this).prop('checked',true);
+              
+            })
+
         })
-        
+        // $('#btn2').click(function(){
+        //   $('input[name="language"]:checked').each(function(i,e){
+        //       console.log(i+ " "+$(e).val());
+        //       $(this).prop('checked',false);
+        //   console.log("------select--------");
+        //   console.log($('select > option:selected'));
+        //     })
+        // })
+
+        $('select').change(function(){
+          console.log("------select--------");
+          console.log($(this).val());
+        })
+        $('#btn2').click(function(){
+          var arr = $('input[name="language"]:checked').map(function(i,e){
+              return i%2==0?$(e).val():$.noop();
+            })
+            console.log('------.map()-----------');
+            console.log(arr);
+            console.log('------.grep()-----------');
+            var  ar01 =[0,1,2,3,4];
+            arr= $.grep(ar01,function(e,i){
+              return 1;
+            })
+            console.log(arr);
+            console.log('------.map()2-----------');
+            ar01 =[0,1,2,3,4,'r',{
+              title:"hainguyen",
+              age:13
+            }];
+            arr= $.map(ar01,function(e,i){
+              return i%2==0?e:$.noop();
+            })
+            console.log(arr);
+        })
     });
 </script>
 <body>
@@ -45,9 +92,18 @@
   <input type="checkbox" value="JQuey" name="language">
   <label>JQuey</label>
   <br>
+  <div>
 
+  <span>Select the language:</span>
+<select name="language" id="language" multiple>
+  <option value="select">Select...</option>
+  <option value="C#">C#</option>
+  <option value="C++">C++</option>
+  <option value="Java">Java</option>
+  <option value="Php">Php</option>
+</select></div>
   <button id="btn01">Confirm</button>
   <p id="pResult"></p>
-
+<button id="btn2">Dao nguoc</button>
 </body>
 </html>
