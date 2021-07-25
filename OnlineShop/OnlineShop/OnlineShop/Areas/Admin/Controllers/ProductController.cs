@@ -105,5 +105,18 @@ namespace OnlineShop.Areas.Admin.Controllers
       }
       return View();
     }
+    public string AddNewPro(Model.EF.Product pro)
+    {
+      string message = "Add product fail!";
+      var dao = new ProductDao();
+      pro.CreatedDate = DateTime.Now;
+      pro.CreatedBy = ((UserLogin)Session[CommonConstant.USER_SESSION]).UserName;
+      long id = dao.Insert(pro);
+      if (id > 0)
+      {
+        message = "Add product success!";
+      }
+      return message;
+  }
   }
 }
