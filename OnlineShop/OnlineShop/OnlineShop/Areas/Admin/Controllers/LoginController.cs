@@ -32,6 +32,7 @@ namespace OnlineShop.Areas.Admin.Controllers
           userSession.UserName = user.Username;
           userSession.Id = user.ID;
           Session.Add(CommonConstant.USER_SESSION, userSession);
+          TempData["loginUser"] = ((UserLogin)Session[CommonConstant.USER_SESSION]).UserName;
           return RedirectToAction("Index", "Home");
         }else if(res == CommonConstant.kUserLocked)
         {
