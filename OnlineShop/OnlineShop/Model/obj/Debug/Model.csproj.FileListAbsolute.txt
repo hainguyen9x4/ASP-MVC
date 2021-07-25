@@ -13,3 +13,4 @@ D:\HOC_TAP\Git\ASP-MVC\OnlineShop\OnlineShop\Model\obj\Debug\Model.csproj.CoreCo
 D:\HOC_TAP\Git\ASP-MVC\OnlineShop\OnlineShop\Model\obj\Debug\Model.csproj.CopyComplete
 D:\HOC_TAP\Git\ASP-MVC\OnlineShop\OnlineShop\Model\obj\Debug\Model.dll
 D:\HOC_TAP\Git\ASP-MVC\OnlineShop\OnlineShop\Model\obj\Debug\Model.pdb
+D:\HOC_TAP\Git\ASP-MVC\OnlineShop\OnlineShop\Model\obj\Debug\Model.csprojAssemblyReference.cache

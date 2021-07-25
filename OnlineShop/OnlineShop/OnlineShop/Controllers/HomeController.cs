@@ -48,7 +48,7 @@ namespace OnlineShop.Controllers
     [ChildActionOnly]
     public ActionResult Slider()
     {
-      var model = new SlideDao().GetAllSlide();
+      var model = new SlideDao().GetAllSlide(10,5);
       return PartialView(model);
     }
     [ChildActionOnly]

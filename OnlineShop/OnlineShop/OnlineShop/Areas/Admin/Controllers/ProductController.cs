@@ -117,6 +117,6 @@ namespace OnlineShop.Areas.Admin.Controllers
         message = "Add product success!";
       }
       return message;
-  }
+    }
   }
 }
