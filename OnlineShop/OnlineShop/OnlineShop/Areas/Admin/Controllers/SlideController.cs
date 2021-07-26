@@ -55,6 +55,33 @@ namespace OnlineShop.Areas.Admin.Controllers
       file.SaveAs(Server.MapPath("~/Content/images/slide" + file.FileName));
       return "/Content/images/slide" + file.FileName;
     }
+    [HttpGet]
+    public ActionResult Edit(int id)
+    {
+      var data = new SlideDao().GetSlideFromID(id);
+      return View(data);
+    }
+    [HttpPost]
+    public ActionResult Edit(Slide data)
+    {
+      if (ModelState.IsValid)
+      {
+        var dao = new SlideDao();
+        var user_session = Session.SessionID;
+        var currentUser = (UserLogin)Session[CommonConstant.USER_SESSION];
+        data.ModifyBy = currentUser.UserName;
+        bool ret = dao.Update(data);
+        if (ret)
+        {
+          return RedirectToAction("Index", "Slide");
+        }
+        else
+        {
+          ModelState.AddModelError("", "Update slide failed!");
+        }
+      }
+      return View();
+    }
     [HttpDelete]
     public ActionResult Delete(int id)
     {
@@ -69,6 +96,26 @@ namespace OnlineShop.Areas.Admin.Controllers
         ModelState.AddModelError("", "Delete slide failed!");
       }
       return View();
+    }
+    public JsonResult ChangeStatus(long id)
+    {
+      var dao = new SlideDao();
+      var ret = false;
+      var sta = false;
+      try
+      {
+        sta = dao.ChangeStatus(id);
+        ret = true;
+      }
+      catch
+      {
+        ret = false;
+      }
+      return Json(new
+      {
+        status = sta,
+        result = ret
+      });
     }
   }
 }

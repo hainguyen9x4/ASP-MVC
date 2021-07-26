@@ -1,0 +1,113 @@
+﻿@model Model.EF.Slide
+
+@{
+  ViewBag.Title = "Edit slide";
+  Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
+  var listStatus = new SelectList(new List<SelectListItem>
+{
+    new SelectListItem { Selected = Model.Status==true?true:false, Text = "True", Value = "true"},
+    new SelectListItem { Selected = Model.Status==false?true:false, Text = "False", Value = "false"}
+}, "Value", "Text");
+}
+
+<h2>Edit</h2>
+@section footerScript{
+    <script>
+        $(document).ready(function () {
+            if ($('#Image').val()!= '') {
+                $('#selected-img').attr('src', $('#Image').val());
+            }
+            $('#btnSelectImg').click(function () {
+                $('#dlgbox').trigger('click');
+            });
+                $('#dlgbox').change(function () {
+                    if (window.FormData !== undefined) {
+                        //lay du lieu tren upload file
+                        var fileUpload = $('#dlgbox').get(0);
+                        var file = fileUpload.files;
+
+                        console.log("file--------");
+                        console.log(file);
+                        var formdata = new FormData();
+                        formdata.append('file', file[0]);
+                        $.ajax({
+                            type: 'POST',
+                            url: '/Slide/UploadImage',
+                            contentType: false,
+                            processData: false,
+                            data: formdata,
+                            success: function (urlImg) {
+                                $('#Image').attr('value', urlImg);
+                                $('#selected-img').attr('src', urlImg);
+                            },
+                            error: function (err) {
+                                console.log('error'+err);
+                            }
+                        })
+                    }
+                })
+        })
+    </script>
+      }
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Slide</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })
+                <input type="file" id="dlgbox" style="display:none" accept=".png,.jpg" />
+                <button type="button" id="btnSelectImg" class="btn btn-success">...</button>
+                <div>
+                    <img id="selected-img" style="width:100px;height:100px;" />
+                </div>
+                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DisplayOrder, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.DisplayOrder, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DisplayOrder, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @*@Html.TextBoxFor(model => model.Status)*@
+                    @*@Html.DropDownList("Status", listStatus, "Status", new { @class = "form-control" })*@
+                    @Html.DropDownListFor(model => model.Status, listStatus, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Update" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

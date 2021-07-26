@@ -4,6 +4,9 @@
     ViewBag.Title = "Slide";
     Layout = "~/Areas/Admin/Views/Shared/_Layout_Admin.cshtml";
 }
+@section footerScript{
+    <script type="text/javascript" src="/Areas/Assets/js/Controller/slideController.js"></script>
+}
 <h2>Slide view</h2>
 <div class="row">
     <div class="col-lg-12">
@@ -31,19 +34,21 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr id="row_@item.ID">
-                                <td>@item.ID</td>
-                                <td>
-                                @item.Image
-                                <img src="@item.Image" style="width:100px;height:100px;" />
+                                <tr id="row_@item.ID">
+                                    <td>@item.ID</td>
+                                    <td>
+                                        @item.Image
+                                        <img src="@item.Image" style="width:100px;height:100px;" />
+                                    </td>
+                                    <td>@item.DisplayOrder</td>
+                                    <td>@item.Description</td>
+                                    <td>
+                                        <a href="#" class="btnx-active" data-id="@item.ID">@item.Status</a>
                                 </td>
-                                <td>@item.DisplayOrder</td>
-                                <td>@item.Description</td>
-                                <td>@item.Status</td>
                                 <td>@item.CreatedBy</td>
                                 <td>@(item.CreatedDate != null ? item.CreatedDate.Value.ToString("dd-MM-yyyy") : "n/a")</td>
                                 <td>
-                                    <a href="/Admin/Product/Edit/@item.ID">Edit</a>|
+                                    <a href="/Admin/Slide/Edit/@item.ID">Edit</a>|
                                     @Ajax.ActionLink("Delete", "Delete", new { id = item.ID }, new AjaxOptions
                                {
                                    Confirm = "Do you want to delete?",
@@ -52,7 +57,7 @@
                                })
                                 </td>
                             </tr>
-                            }
+                        }
                         </tbody>
                     </table>
                     @Html.PagedListPager(Model, page => Url.Action("Index"))
