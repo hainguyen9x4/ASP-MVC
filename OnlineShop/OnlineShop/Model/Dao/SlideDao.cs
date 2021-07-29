@@ -19,6 +19,10 @@ namespace Model.Dao
     {
       return db.Slides.OrderBy(x => x.DisplayOrder).ToPagedList(page, page_size);
     }
+    public List<Slide> GetAllSlideEnable(int top)
+    {
+      return db.Slides.Where(x => x.Status == true).OrderBy(x=>x.ID).Take(top).ToList();
+    }
     public long Insert(Slide entity)
     {
       if (db.Slides.SingleOrDefault(x => x.Image == entity.Image) == null)
