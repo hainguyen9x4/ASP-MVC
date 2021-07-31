@@ -111,7 +111,7 @@ namespace Model.EF
           .IsUnicode(false);
 
       modelBuilder.Entity<Slide>()
-          .Property(e => e.CreatedBy)
+          .Property(e => e.CreatedBy) 
           .IsUnicode(false);
 
       modelBuilder.Entity<Slide>()

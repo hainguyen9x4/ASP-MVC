@@ -79,5 +79,13 @@ namespace Model.Dao
         return false;
       }
     }
+    public List<Product> GetNewProductHome(int top)
+    {
+      return db.Products.OrderByDescending(x => x.CreatedDate).Take(top).ToList();
+    }
+    public List<Product> GetHotProduct(int top)
+    {
+      return db.Products.Where(x => x.TopHot !=null && x.TopHot > DateTime.Now).Take(top).ToList();
+    }
   }
 }

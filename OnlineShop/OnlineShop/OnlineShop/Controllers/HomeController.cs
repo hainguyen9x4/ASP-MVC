@@ -1,4 +1,5 @@
 ﻿using Model.Dao;
+using Model.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,9 @@ namespace OnlineShop.Controllers
   {
     public ActionResult Index()
     {
+      var dao = new ProductDao();
+      ViewBag.NewProduct = dao.GetNewProductHome(4);
+      ViewBag.HotProduct = dao.GetHotProduct(4);
       return View();
     }
 
@@ -48,7 +52,7 @@ namespace OnlineShop.Controllers
     [ChildActionOnly]
     public ActionResult Slider()
     {
-      var model = new SlideDao().GetAllSlide(10,5);
+      var model = new SlideDao().GetAllSlideEnable(3);
       return PartialView(model);
     }
     [ChildActionOnly]
@@ -57,5 +61,6 @@ namespace OnlineShop.Controllers
       var model = new FooterDao().GetAllSlide();
       return PartialView(model);
     }
+
   }
 }
