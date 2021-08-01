@@ -67,9 +67,13 @@ namespace Model.Dao
         {
           user.PromationPrice = entity.PromationPrice;
         }
-        if (user.Quanlity >=0)
+        if (entity.Quanlity >=0)
         {
           user.Quanlity = entity.Quanlity;
+        }
+        if (entity.TopHot != null)
+        {
+          user.TopHot = entity.TopHot;
         }
         if (!String.IsNullOrEmpty(entity.MetaKeyword))
         {

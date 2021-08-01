@@ -134,7 +134,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TopHot, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.TopHot, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.TopHot, "{0:yyyy-MM-dd}", new { @type = "date", @value =Model.TopHot.HasValue?Model.TopHot.Value.ToString("yyyy-MM-dd"):"" })
                 @Html.ValidationMessageFor(model => model.TopHot, "", new { @class = "text-danger" })
             </div>
         </div>
