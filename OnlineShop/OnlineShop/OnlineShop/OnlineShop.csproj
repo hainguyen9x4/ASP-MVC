@@ -3133,6 +3133,8 @@
     <Content Include="Views\Home\ProductCategory.cshtml" />
     <Content Include="Views\Home\Slider.cshtml" />
     <Content Include="Views\Home\Footer.cshtml" />
+    <Content Include="Views\Home\Category.cshtml" />
+    <Content Include="Views\Home\ProductDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -63,9 +63,21 @@ namespace Model.Dao
         {
           user.Price = entity.Price;
         }
+        if (entity.PromationPrice != null)
+        {
+          user.PromationPrice = entity.PromationPrice;
+        }
         if (user.Quanlity >=0)
         {
           user.Quanlity = entity.Quanlity;
+        }
+        if (!String.IsNullOrEmpty(entity.MetaKeyword))
+        {
+          user.MetaKeyword = entity.MetaKeyword;
+        }
+        if (!String.IsNullOrEmpty(entity.MetaDescription))
+        {
+          user.MetaDescription = entity.MetaDescription;
         }
         user.CategoryID = entity.CategoryID;
         user.ModifyBy = entity.ModifyBy;
@@ -86,6 +98,10 @@ namespace Model.Dao
     public List<Product> GetHotProduct(int top)
     {
       return db.Products.Where(x => x.TopHot !=null && x.TopHot > DateTime.Now).Take(top).ToList();
+    }
+    public List<Product> GetAllCategoryProduct(long id)
+    {
+      return db.Products.Where(x => x.CategoryID == id ).ToList();
     }
   }
 }

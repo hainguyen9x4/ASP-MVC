@@ -4,7 +4,7 @@
         <h3>Categories</h3>
         @foreach (var item in Model)
         {
-            <li><a href="">@item.Name</a></li>
+            <li><a href="product/@item.MetaTitle-@item.ID">@item.Name</a></li>
         }
     </ul>
 </div>

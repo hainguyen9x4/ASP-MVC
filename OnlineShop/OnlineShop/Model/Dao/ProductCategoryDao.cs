@@ -48,5 +48,9 @@ namespace Model.Dao
       }
       else return false;
     }
+    public ProductCategory GetFromID(long id)
+    {
+      return db.ProductCategories.Find(id);
+    }
   }
 }

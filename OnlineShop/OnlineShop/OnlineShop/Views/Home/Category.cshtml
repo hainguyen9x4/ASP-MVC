@@ -1,0 +1,32 @@
+﻿@model List<Model.EF.Product>
+@{
+    ViewBag.Title = "Category";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.CategoryName Category</h2>
+<div class="main">
+    <div class="content">
+        <div class="section group">
+            @{
+              foreach (var item in Model)
+              {
+                    <div class="grid_1_of_4 images_1_of_4">
+                        <a href="~/detail/@item.MetaKeyword-@item.ID"><img src="@item.Avatar" alt=@item.Name /></a>
+                        <h2>@item.Name</h2>
+                        <div class="price-details">
+                            <div class="price-number">
+                                <p><span class="rupees">@(item.Price.HasValue?item.Price.Value.ToString("N0")+"đ":"Contact")</span></p>
+                            </div>
+                            <div class="add-cart">
+                                <h4><a href="preview.html">Add to Cart</a></h4>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+                    </div>
+                }
+            }
+        </div>
+</div>
+</div>

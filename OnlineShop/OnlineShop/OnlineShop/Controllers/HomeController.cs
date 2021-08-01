@@ -14,10 +14,14 @@ namespace OnlineShop.Controllers
     {
       var dao = new ProductDao();
       ViewBag.NewProduct = dao.GetNewProductHome(4);
-      ViewBag.HotProduct = dao.GetHotProduct(4);
+      SetViewBagTopHotProduct(4);
       return View();
     }
-
+    private void SetViewBagTopHotProduct(int top)
+    {
+      var dao = new ProductDao();
+      ViewBag.HotProduct = dao.GetHotProduct(top);
+    }
     public ActionResult About()
     {
       ViewBag.Message = "Your application description page.";
@@ -61,6 +65,18 @@ namespace OnlineShop.Controllers
       var model = new FooterDao().GetAllSlide();
       return PartialView(model);
     }
-
+    public ActionResult Category(long cateId)
+    {
+      var dao = new ProductDao();
+      var list = dao.GetAllCategoryProduct(cateId);
+      ViewBag.CategoryName = new ProductCategoryDao().GetFromID(cateId).Name;
+      return View(list);
+    }
+    public ActionResult ProductDetail(long Id)
+    {
+      var product = new ProductDao().GetProductFromID(Id);
+      SetViewBagTopHotProduct(4);
+      return View(product);
+    }
   }
 }
