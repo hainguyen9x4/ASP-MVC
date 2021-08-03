@@ -24,6 +24,7 @@ namespace Model.EF
     public virtual DbSet<Product> Products { get; set; }
     public virtual DbSet<ProductCategory> ProductCategories { get; set; }
     public virtual DbSet<Slide> Slides { get; set; }
+    public virtual DbSet<Logo> Logos { get; set; }
     public virtual DbSet<Systemconfig> Systemconfigs { get; set; }
     public virtual DbSet<Tag> Tags { get; set; }
     public virtual DbSet<User> Users { get; set; }
@@ -115,6 +116,13 @@ namespace Model.EF
           .IsUnicode(false);
 
       modelBuilder.Entity<Slide>()
+          .Property(e => e.ModifyBy)
+          .IsUnicode(false);
+      modelBuilder.Entity<Logo>()
+          .Property(e => e.CreatedBy) 
+          .IsUnicode(false);
+
+      modelBuilder.Entity<Logo>()
           .Property(e => e.ModifyBy)
           .IsUnicode(false);
 

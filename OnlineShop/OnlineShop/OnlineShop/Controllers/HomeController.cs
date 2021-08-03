@@ -78,5 +78,11 @@ namespace OnlineShop.Controllers
       SetViewBagTopHotProduct(4);
       return View(product);
     }
+    [ChildActionOnly]
+    public ActionResult Logo()
+    {
+      var model = new LogoDao().GetFirstEnableLogo();
+      return PartialView(model);
+    }
   }
 }

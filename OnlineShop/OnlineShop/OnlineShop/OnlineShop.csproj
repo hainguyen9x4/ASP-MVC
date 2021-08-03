@@ -141,6 +141,7 @@
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LogoController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\SlideController.cs" />
@@ -165,6 +166,7 @@
     <Content Include="Areas\Assets\img\undraw_profile_3.svg" />
     <Content Include="Areas\Assets\img\undraw_rocket.svg" />
     <Content Include="Areas\Assets\js\Controller\productController.js" />
+    <Content Include="Areas\Assets\js\Controller\logoController.js" />
     <Content Include="Areas\Assets\js\Controller\slideController.js" />
     <Content Include="Areas\Assets\js\Controller\userController.js" />
     <Content Include="Areas\Assets\js\demo\chart-area-demo.js" />
@@ -2864,6 +2866,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\bkav-virut.png" />
     <Content Include="Content\images\camera-canon.png" />
+    <Content Include="Content\images\DefaultLogo.PNG" />
     <Content Include="Content\images\del3421.png" />
     <Content Include="Content\images\feature-pic1.jpg" />
     <Content Include="Content\images\feature-pic2.jpg" />
@@ -3101,6 +3104,8 @@
     <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Slide\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Slide\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Logo\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Logo\Create.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -3135,6 +3140,7 @@
     <Content Include="Views\Home\Footer.cshtml" />
     <Content Include="Views\Home\Category.cshtml" />
     <Content Include="Views\Home\ProductDetail.cshtml" />
+    <Content Include="Views\Home\Logo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

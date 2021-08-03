@@ -28,9 +28,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="clear"></div>
             </div>
             <div class="header_top">
-                <div class="logo">
-                    <a href="index.html"><img src="~/Asset/images/logo.png" alt="" /></a>
-                </div>
+                @{Html.RenderAction("Logo", "Home"); }
                 <div class="cart">
                     <p>
                         Welcome to our Online Store! <span>Cart:</span><div id="dd" class="wrapper-dropdown-2">
