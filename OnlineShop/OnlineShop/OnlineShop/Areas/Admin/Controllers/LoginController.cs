@@ -1,10 +1,6 @@
 ﻿using Model.Dao;
 using OnlineShop.Areas.Admin.Data;
 using OnlineShop.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace OnlineShop.Areas.Admin.Controllers
@@ -34,14 +30,16 @@ namespace OnlineShop.Areas.Admin.Controllers
           Session.Add(CommonConstant.USER_SESSION, userSession);
           TempData["loginUser"] = ((UserLogin)Session[CommonConstant.USER_SESSION]).UserName;
           return RedirectToAction("Index", "Home");
-        }else if(res == CommonConstant.kUserLocked)
+        }
+        else if (res == CommonConstant.kUserLocked)
         {
           ModelState.AddModelError("", "Username is locked!");
-        }else if(res == CommonConstant.kNoExist)
+        }
+        else if (res == CommonConstant.kNoExist)
         {
           ModelState.AddModelError("", "No exist user!");
         }
-        else if(res == CommonConstant.kWrongPassword)
+        else if (res == CommonConstant.kWrongPassword)
         {
           ModelState.AddModelError("", "Wrong password!");
         }

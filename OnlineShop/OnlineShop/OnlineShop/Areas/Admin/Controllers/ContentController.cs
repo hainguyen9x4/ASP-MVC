@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Model.Dao;
+﻿using Model.Dao;
 using Model.EF;
 using OnlineShop.Common;
+using System;
+using System.Web.Mvc;
 
 namespace OnlineShop.Areas.Admin.Controllers
 {
@@ -34,7 +31,7 @@ namespace OnlineShop.Areas.Admin.Controllers
         var dao = new ContentDao();
         content.CreatedDate = DateTime.Now;
         content.CreatedBy = ((UserLogin)Session[CommonConstant.USER_SESSION]).UserName;
-        if(content.Status == null)
+        if (content.Status == null)
         {
           content.Status = false;
         }

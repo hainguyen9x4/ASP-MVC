@@ -19,6 +19,10 @@ namespace Model.Dao
     {
       return db.Products.OrderBy(x=>x.ID).ToPagedList(page, pagesize);
     }
+    public IEnumerable<Product> GetAllProduct()
+    {
+      return db.Products.OrderBy(x => x.ID).ToList();
+    }
     public long Insert(Product data)
     {
       if (db.Products.SingleOrDefault(x => x.Name == data.Name) == null)

@@ -1,60 +1,56 @@
 ﻿using Model.Dao;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 using Model.EF;
 using OnlineShop.Common;
-using PagedList;
+using System.Web.Mvc;
 namespace OnlineShop.Areas.Admin.Controllers
 {
-    public class UserController : BaseController
+  public class UserController : BaseController
+  {
+    // GET: Admin/User
+    public ActionResult Index(string searchString, int page = 1, int page_zise = 10)
     {
-        // GET: Admin/User
-        public ActionResult Index(string searchString, int page =1, int page_zise =10)
+      var dao = new UserDao();
+      var list = dao.GetListUser(searchString, page, page_zise);
+      ViewBag.searchString = searchString;
+      return View(list);
+    }
+    public ActionResult Edit(int id)
+    {
+      var user = new UserDao().GetUserFromID(id);
+      return View(user);
+    }
+    [HttpGet]
+    public ActionResult Create()
+    {
+      return View();
+    }
+    [HttpPost]
+    public ActionResult Create(User user)
+    {
+      if (ModelState.IsValid)
+      {
+        var dao = new UserDao();
+        var pass = Encryptor.MD5Hash(user.Password);
+        user.Password = pass;
+        long id = dao.Insert(user);
+        if (id > 0)
         {
-            var dao = new UserDao();
-            var list = dao.GetListUser(searchString, page, page_zise);
-            ViewBag.searchString = searchString;
-            return View(list);
+          SetAlert("Add user success!", AlertType.SUCCESS);
+          return RedirectToAction("Index", "User");
         }
-        public ActionResult Edit(int id)
+        else if (id == 0)
         {
-          var user = new UserDao().GetUserFromID(id);
-          return View(user);
+          SetAlert("Add user fail!", AlertType.ERROR);
+          ModelState.AddModelError("", "User is exist!");
         }
-        [HttpGet]
-        public ActionResult Create()
+        else
         {
-            return View();
+          SetAlert("Add user fail!", AlertType.ERROR);
+          ModelState.AddModelError("", "Add new user failed!");
         }
-        [HttpPost]
-      public ActionResult Create(User user)
-        {
-            if (ModelState.IsValid)
-            {
-                var dao = new UserDao();
-                var pass = Encryptor.MD5Hash(user.Password);
-                user.Password = pass;
-                long id = dao.Insert(user);
-                if (id > 0)
-                {
-                    SetAlert("Add user success!", AlertType.SUCCESS);
-                    return RedirectToAction("Index","User");
-                }else if(id == 0)
-                {
-                   SetAlert("Add user fail!", AlertType.ERROR);
-                   ModelState.AddModelError("", "User is exist!");
-                 }
-                else
-                {
-                    SetAlert("Add user fail!", AlertType.ERROR);
-                    ModelState.AddModelError("", "Add new user failed!");
-                }
-            }
-            return View();
-        }
+      }
+      return View();
+    }
     [HttpPost]
     public ActionResult Edit(User user)
     {
@@ -111,5 +107,5 @@ namespace OnlineShop.Areas.Admin.Controllers
         result = ret
       });
     }
-    }
+  }
 }

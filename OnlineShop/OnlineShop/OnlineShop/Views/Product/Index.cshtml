@@ -1,0 +1,65 @@
+﻿@model List<Model.EF.Product>
+@{
+  ViewBag.Title = "All product";
+  Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="main">
+    <div class="content">
+        <div class="content_top">
+            <div class="heading">
+                <h3>All Products</h3>
+            </div>
+        </div>
+
+        @{
+          int section = Model.Count / 4;
+          int i=0;
+          for (int index = 0; index < section; index++)
+          {
+                <div class="section group">
+                    @for(int j = 0; j < 4; j++) { 
+                     <div class="grid_1_of_4 images_1_of_4">
+                        <a href="detail/@Model[i].MetaKeyword-@Model[i].ID"><img src="@Model[i].Avatar" alt=@Model[i].Name /></a>
+                        <h2>@Model[i].Name</h2>
+                        <div class="price-details">
+                            <div class="price-number">
+                                <p><span class="rupees">@(Model[i].Price.HasValue ? Model[i].Price.Value.ToString("N0") + "đ" : "Contact")</span></p>
+                            </div>
+                            <div class="add-cart">
+                                <h4><a href="preview.html">Add to Cart</a></h4>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                        i++;
+                    }
+
+                </div>
+          }
+          int mode = Model.Count % 4;
+          if (mode > 0) {
+                <div class="section group">
+                    @for(int j = 0; j < mode; j++) { 
+                     <div class="grid_1_of_4 images_1_of_4">
+                        <a href="detail/@Model[i].MetaKeyword-@Model[i].ID"><img src="@Model[i].Avatar" alt=@Model[i].Name /></a>
+                        <h2>@Model[i].Name</h2>
+                        <div class="price-details">
+                            <div class="price-number">
+                                <p><span class="rupees">@(Model[i].Price.HasValue ? Model[i].Price.Value.ToString("N0") + "đ" : "Contact")</span></p>
+                            </div>
+                            <div class="add-cart">
+                                <h4><a href="preview.html">Add to Cart</a></h4>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                     </div>
+                        i++;
+                    }
+
+                </div>
+          }
+          }
+     </div>
+            
+</div>
