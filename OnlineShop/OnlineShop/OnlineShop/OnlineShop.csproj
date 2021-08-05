@@ -151,7 +151,6 @@
     <Compile Include="Common\Encryptor.cs" />
     <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2869,6 +2868,7 @@
     <Content Include="Content\images\camera-canon.png" />
     <Content Include="Content\images\DefaultLogo.PNG" />
     <Content Include="Content\images\del3421.png" />
+    <Content Include="Content\images\facebook.png" />
     <Content Include="Content\images\feature-pic1.jpg" />
     <Content Include="Content\images\feature-pic2.jpg" />
     <Content Include="Content\images\feature-pic3.jpg" />
@@ -2877,6 +2877,8 @@
     <Content Include="Content\images\new-pic1.jpg" />
     <Content Include="Content\images\new-pic4.jpg" />
     <Content Include="Content\images\office365.jpg" />
+    <Content Include="Content\images\twitter.png" />
+    <Content Include="Content\images\wishlist.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

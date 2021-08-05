@@ -69,8 +69,9 @@ namespace OnlineShop.Controllers
     }
     public ActionResult ProductDetail(long Id)
     {
-      var product = new ProductDao().GetProductFromID(Id);
-      SetViewBagTopHotProduct(4);
+      var dao = new ProductDao();
+      var product = dao.GetProductFromID(Id);
+      ViewBag.ListRelated = dao.GetAllRelatedProduct(product);
       return View(product);
     }
     [ChildActionOnly]

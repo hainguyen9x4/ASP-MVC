@@ -111,5 +111,9 @@ namespace Model.Dao
     {
       return db.Products.Where(x => x.CategoryID == id ).ToList();
     }
+    public List<Product> GetAllRelatedProduct(Product p)
+    {
+      return db.Products.Where(x => x.CategoryID == p.CategoryID && x.ID != p.ID).Take(4).ToList();
+    }
   }
 }
