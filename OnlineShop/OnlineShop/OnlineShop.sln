@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop", "OnlineShop\On
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{6B732869-5917-4AC8-A6DA-10B6EFAF4D1F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySqlConnectDB", "MySqlConnectDB\MySqlConnectDB.csproj", "{5533E031-91B5-4CD7-9792-C9A0EFE7DCC5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6B732869-5917-4AC8-A6DA-10B6EFAF4D1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B732869-5917-4AC8-A6DA-10B6EFAF4D1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B732869-5917-4AC8-A6DA-10B6EFAF4D1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5533E031-91B5-4CD7-9792-C9A0EFE7DCC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5533E031-91B5-4CD7-9792-C9A0EFE7DCC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5533E031-91B5-4CD7-9792-C9A0EFE7DCC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5533E031-91B5-4CD7-9792-C9A0EFE7DCC5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
