@@ -1,4 +1,5 @@
 ﻿using Model.EF;
+using Model.ViewModel;
 using PagedList;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,38 @@ namespace Model.Dao
     }
     public IEnumerable<Product> GetAllProduct(int page, int pagesize)
     {
-      return db.Products.OrderBy(x=>x.ID).ToPagedList(page, pagesize);
+      return db.Products.OrderBy(x => x.ID).ToPagedList(page, pagesize);
+    }
+    public IEnumerable<ProductViewModel> GetAllProduct2(int page, int pagesize)
+    {
+      var model = from a in db.Products
+                  join b in db.ProductCategories
+                  on a.CategoryID equals b.ID
+                  select new ProductViewModel()
+                  {
+                    ID = a.ID,
+                    Name = a.Name,
+                    Code = a.Code,
+                    Description = a.Description,
+                    Avatar = a.Avatar,
+                    MoreImage = a.MoreImage,
+                    Price = a.Price,
+                    PromationPrice = a.PromationPrice,
+                    IncludeVAT = a.IncludeVAT,
+                    Quanlity = a.Quanlity,
+                    CategoryName = b.Name,
+                    Detail = a.Detail,
+                    Warranty = a.Warranty,
+                    MetaDescription = a.MetaDescription,
+                    CreatedDate = a.CreatedDate,
+                    CreatedBy = a.CreatedBy,
+                    ModifyDate = a.ModifyDate,
+                    ModifyBy = a.ModifyBy,
+                    MetaKeyword = a.MetaKeyword,
+                    TopHot = a.TopHot,
+                    ViewCount = a.ViewCount,
+                  };
+      return model.OrderByDescending(x=>x.CreatedDate).ToPagedList(page, pagesize);
     }
     public IEnumerable<Product> GetAllProduct()
     {
@@ -63,7 +95,7 @@ namespace Model.Dao
         }
         user.Description = entity.Description;
         user.Avatar = entity.Avatar;
-        if(entity.Price != null)
+        if (entity.Price != null)
         {
           user.Price = entity.Price;
         }
@@ -71,7 +103,7 @@ namespace Model.Dao
         {
           user.PromationPrice = entity.PromationPrice;
         }
-        if (entity.Quanlity >=0)
+        if (entity.Quanlity >= 0)
         {
           user.Quanlity = entity.Quanlity;
         }
@@ -105,11 +137,11 @@ namespace Model.Dao
     }
     public List<Product> GetHotProduct(int top)
     {
-      return db.Products.Where(x => x.TopHot !=null && x.TopHot > DateTime.Now).Take(top).ToList();
+      return db.Products.Where(x => x.TopHot != null && x.TopHot > DateTime.Now).Take(top).ToList();
     }
     public List<Product> GetAllCategoryProduct(long id)
     {
-      return db.Products.Where(x => x.CategoryID == id ).ToList();
+      return db.Products.Where(x => x.CategoryID == id).ToList();
     }
     public List<Product> GetAllRelatedProduct(Product p)
     {

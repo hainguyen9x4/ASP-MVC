@@ -17,6 +17,13 @@ namespace OnlineShop.Areas.Admin.Controllers
       SetviewBag();
       return View(list);
     }
+    public ActionResult Index2(int page = 1, int page_zise = 10)
+    {
+      var dao = new ProductDao();
+      var list = dao.GetAllProduct2(page, page_zise);
+      SetviewBag();
+      return View(list);
+    }
     public ActionResult Edit(long id)
     {
       var user = new ProductDao().GetProductFromID(id);
