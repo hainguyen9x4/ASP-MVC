@@ -3,6 +3,7 @@ using Model.ViewModel;
 using PagedList;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,7 @@ namespace Model.Dao
       var model = from a in db.Products
                   join b in db.ProductCategories
                   on a.CategoryID equals b.ID
+                  
                   select new ProductViewModel()
                   {
                     ID = a.ID,
@@ -50,6 +52,12 @@ namespace Model.Dao
                     ViewCount = a.ViewCount,
                   };
       return model.OrderByDescending(x=>x.CreatedDate).ToPagedList(page, pagesize);
+    }
+    public IEnumerable<ProductViewModel> GetAllProduct3(int page, int pagesize)
+    {
+      var clientIdParameter = new SqlParameter("@CategoryID", 4);
+      var model = db.Database.SqlQuery<ProductViewModel>("GetAllProductByCategory @CategoryID", new SqlParameter("CategoryID", 4));
+      return model.OrderByDescending(x => x.CreatedDate).ToList().ToPagedList(page,pagesize);
     }
     public IEnumerable<Product> GetAllProduct()
     {
