@@ -147,9 +147,11 @@ namespace Model.Dao
     {
       return db.Products.Where(x => x.TopHot != null && x.TopHot > DateTime.Now).Take(top).ToList();
     }
-    public List<Product> GetAllCategoryProduct(long id)
+    public List<Product> GetAllCategoryProduct(long id, ref int totalRecode, int page = 1, int pageSize = 4)
     {
-      return db.Products.Where(x => x.CategoryID == id).ToList();
+      var model = db.Products.Where(x => x.CategoryID == id);
+      totalRecode = model.Count();
+      return model.OrderBy(x => x.CreatedDate).Skip((page - 1) * pageSize).Take(pageSize).ToList();
     }
     public List<Product> GetAllRelatedProduct(Product p)
     {

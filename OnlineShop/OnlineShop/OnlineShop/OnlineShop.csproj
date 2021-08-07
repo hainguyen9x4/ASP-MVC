@@ -157,6 +157,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Assets\css\bootstrap.min.css" />
     <Content Include="Areas\Assets\css\sb-admin-2.css" />
     <Content Include="Areas\Assets\css\sb-admin-2.min.css" />
     <Content Include="Areas\Assets\img\undraw_posting_photo.svg" />
@@ -2724,6 +2725,7 @@
     <Content Include="Areas\Assets\vendor\jquery\jquery.min.js" />
     <Content Include="Areas\Assets\vendor\jquery\jquery.slim.js" />
     <Content Include="Areas\Assets\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Asset\css\bootstrap.min.css" />
     <Content Include="Asset\css\easy-responsive-tabs.css" />
     <Content Include="Asset\css\global.css" />
     <Content Include="Asset\css\slider.css" />
@@ -2778,9 +2780,11 @@
     <Content Include="Asset\images\twitter.png" />
     <Content Include="Asset\images\value-rating.png" />
     <Content Include="Asset\images\wishlist.png" />
+    <Content Include="Asset\js\bootstrap.min.js" />
     <Content Include="Asset\js\easing.js" />
     <Content Include="Asset\js\easyResponsiveTabs.js" />
     <Content Include="Asset\js\jquery-1.7.2.min.js" />
+    <Content Include="Asset\js\jquery-3.4.1.min.js" />
     <Content Include="Asset\js\jquery.accordion.js" />
     <Content Include="Asset\js\jquery.easing.js" />
     <Content Include="Asset\js\move-top.js" />

@@ -60,11 +60,19 @@ namespace OnlineShop.Controllers
       var model = new FooterDao().GetAllSlide();
       return PartialView(model);
     }
-    public ActionResult Category(long cateId)
+    public ActionResult Category(long cateId, int page = 1, int pageSize = 4)
     {
       var dao = new ProductDao();
-      var list = dao.GetAllCategoryProduct(cateId);
+      int totalRecode = 0;
+      var list = dao.GetAllCategoryProduct(cateId, ref totalRecode, page, pageSize);
       ViewBag.CategoryName = new ProductCategoryDao().GetFromID(cateId).Name;
+      ViewBag.MaxPage = 5;
+      ViewBag.TotalPage = totalRecode / 4 + (totalRecode % 4 == 0 ? 0 : 1);
+      ViewBag.Page = page;
+      ViewBag.First = 1;
+      ViewBag.Prev = page - 1;
+      ViewBag.Last = ViewBag.TotalPage;
+      ViewBag.Next = page + 1;
       return View(list);
     }
     public ActionResult ProductDetail(long Id)
