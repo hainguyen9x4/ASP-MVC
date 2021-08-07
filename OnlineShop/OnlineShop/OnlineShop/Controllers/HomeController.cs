@@ -5,10 +5,18 @@ namespace OnlineShop.Controllers
 {
   public class HomeController : Controller
   {
-    public ActionResult Index()
+    public ActionResult Index(int page = 1, int pageSize = 4)
     {
       var dao = new ProductDao();
-      ViewBag.NewProduct = dao.GetNewProductHome(9);
+      int maxPage =0;
+      ViewBag.NewProduct = dao.GetNewProductHome(9, ref maxPage,  page, pageSize);
+      ViewBag.MaxPage = 5;
+      ViewBag.Page = page;
+      ViewBag.TotalPage = maxPage;
+      ViewBag.First = 1;
+      ViewBag.Next = page + 1;
+      ViewBag.Prev = page - 1;
+      ViewBag.Last = maxPage;
       SetViewBagTopHotProduct(4);
       return View();
     }

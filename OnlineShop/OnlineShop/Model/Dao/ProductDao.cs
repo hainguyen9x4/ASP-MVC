@@ -139,9 +139,11 @@ namespace Model.Dao
         return false;
       }
     }
-    public List<Product> GetNewProductHome(int top)
+    public List<Product> GetNewProductHome(int top, ref int totalPage, int page = 1, int pageSize = 4)
     {
-      return db.Products.OrderByDescending(x => x.CreatedDate).Take(top).ToList();
+      var model =  db.Products.OrderByDescending(x => x.CreatedDate).Take(top).ToList();
+      totalPage = model.Count() / pageSize + (model.Count() % pageSize > 0 ? 1 : 0);
+      return model.Skip((page - 1) * pageSize).Take(pageSize).ToList();
     }
     public List<Product> GetHotProduct(int top)
     {
