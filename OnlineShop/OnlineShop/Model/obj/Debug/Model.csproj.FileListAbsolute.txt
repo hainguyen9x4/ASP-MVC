@@ -9,8 +9,8 @@ D:\HOC_TAP\Git\ASP-MVC\OnlineShop\OnlineShop\Model\bin\Debug\EntityFramework.xml
 D:\HOC_TAP\Git\ASP-MVC\OnlineShop\OnlineShop\Model\bin\Debug\EntityFramework.SqlServer.xml
 D:\HOC_TAP\Git\ASP-MVC\OnlineShop\OnlineShop\Model\bin\Debug\PagedList.xml
 D:\HOC_TAP\Git\ASP-MVC\OnlineShop\OnlineShop\Model\bin\Debug\PagedList.Mvc.xml
-D:\HOC_TAP\Git\ASP-MVC\OnlineShop\OnlineShop\Model\obj\Debug\Model.csprojAssemblyReference.cache
 D:\HOC_TAP\Git\ASP-MVC\OnlineShop\OnlineShop\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
 D:\HOC_TAP\Git\ASP-MVC\OnlineShop\OnlineShop\Model\obj\Debug\Model.csproj.CopyComplete
 D:\HOC_TAP\Git\ASP-MVC\OnlineShop\OnlineShop\Model\obj\Debug\Model.dll
 D:\HOC_TAP\Git\ASP-MVC\OnlineShop\OnlineShop\Model\obj\Debug\Model.pdb
+D:\HOC_TAP\Git\ASP-MVC\OnlineShop\OnlineShop\Model\obj\Debug\Model.csprojAssemblyReference.cache

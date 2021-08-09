@@ -1,4 +1,5 @@
 ﻿using Model.EF;
+using Model.ViewModel;
 using PagedList;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,30 @@ namespace Model.Dao
     public IEnumerable<ProductCategory> GetAllCategory(int page, int pagesize)
     {
       return db.ProductCategories.OrderBy(x => x.DisplayOrder).ToPagedList(page, pagesize);
+    }
+    public IEnumerable<ProductCategory> GetAllCategory2(ref List<Result >countProduct, int page, int pagesize)
+    {
+      var model = from a in db.ProductCategories
+                  join
+                  b in db.Products
+                  on a.ID equals b.CategoryID
+                  group a by a.ID into g
+                  select new Result()
+                  {
+                    ID = g.Key,
+                    NumberProduct = g.ToList().Count()
+                  };
+      countProduct = model.ToList();
+      return db.ProductCategories.OrderBy(x => x.DisplayOrder).ToPagedList(page, pagesize);
+    }
+    public IEnumerable<ProductCategoryViewModel> GetAllCategory3(int page, int pagesize)
+    {
+      return db.Database.SqlQuery<ProductCategoryViewModel>("ProductCategoryFull").OrderBy(x => x.DisplayOrder).ToPagedList(page, pagesize);
+    }
+    public class Result
+    {
+      public long ID;
+      public int NumberProduct;
     }
     public IEnumerable<ProductCategory> GetAllCategory()
     {

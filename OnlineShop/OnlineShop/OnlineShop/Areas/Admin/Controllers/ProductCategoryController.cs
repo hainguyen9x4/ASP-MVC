@@ -1,8 +1,11 @@
 ﻿using Model.Dao;
 using Model.EF;
+using Model.ViewModel;
 using OnlineShop.Common;
 using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
+using static Model.Dao.ProductCategoryDao;
 
 namespace OnlineShop.Areas.Admin.Controllers
 {
@@ -13,6 +16,21 @@ namespace OnlineShop.Areas.Admin.Controllers
     {
       var dao = new ProductCategoryDao();
       var list = dao.GetAllCategory(pagedList, pagesize);
+      return View(list);
+    }
+    public ActionResult Index2(int pagedList = 1, int pagesize = 10)
+    {
+      var dao = new ProductCategoryDao();
+      var countProduct = new List<Result>();
+      var list = dao.GetAllCategory2(ref countProduct, pagedList, pagesize);
+      ViewBag.CountProduct = countProduct;
+      return View(list);
+    }
+    public ActionResult Index3(int pagedList = 1, int pagesize = 10)
+    {
+      var dao = new ProductCategoryDao();
+      var countProduct = new List<Result>();
+      var list = dao.GetAllCategory3(pagedList, pagesize);
       return View(list);
     }
     [HttpGet]
