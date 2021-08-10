@@ -21,13 +21,14 @@ namespace OnlineShop.Controllers
     public ActionResult AddToCart(long productID, int quantity)
     {
       var p = new ProductDao().GetProductFromID(productID);
-      if(Session[cart] != null)
+      if (Session[cart] != null)
       {
         var list = (List<CartItem>)Session[cart];
-        if(list.Exists(x=>x.Product.ID == productID)){
-          foreach(var item in list)
+        if (list.Exists(x => x.Product.ID == productID))
+        {
+          foreach (var item in list)
           {
-            if(item.Product.ID == productID)
+            if (item.Product.ID == productID)
             {
               item.Quantity += quantity;
               break;
@@ -47,6 +48,28 @@ namespace OnlineShop.Controllers
         Session[cart] = listItem;
       }
       return RedirectToAction("Index");
+    }
+    [HttpDelete]
+    public ActionResult Delete(int id)
+    {
+      if (Session[cart] != null)
+      {
+        var list = (List<CartItem>)Session[cart];
+        if (list.Exists(x => x.Product.ID == id))
+        {
+          foreach (var item in list)
+          {
+            if (item.Product.ID == id)
+            {
+              list.Remove(item);
+              break;
+            }
+          }
+          Session[cart] = list;
+          return RedirectToAction("Index");
+        }
+      }
+      return View();
     }
   }
 }

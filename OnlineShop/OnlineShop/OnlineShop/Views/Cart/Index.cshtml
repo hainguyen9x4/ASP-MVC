@@ -29,7 +29,14 @@
                             </td>
                             <td>@item.Product.Price.GetValueOrDefault().ToString("N0")</td>
                             <td>@((item.Product.Price.GetValueOrDefault()*item.Quantity).ToString("N0"))</td>
-                            <td><a href="#">Delete</a></td>
+                            <td>
+                                 @Ajax.ActionLink("Delete", "Delete", new { id = item.Product.ID }, new AjaxOptions
+                                   {
+                                       Confirm = "Do you want to delete?",
+                                       OnComplete = "$('#row_" + item.Product.ID + "').remove()",
+                                       HttpMethod = "Delete"
+                                   })
+                            </td>
                         </tr>
                     }
                     
