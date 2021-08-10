@@ -28,7 +28,8 @@ namespace Model.EF
     public virtual DbSet<Systemconfig> Systemconfigs { get; set; }
     public virtual DbSet<Tag> Tags { get; set; }
     public virtual DbSet<User> Users { get; set; }
-
+    public virtual DbSet<Order> Orders { get; set; }
+    public virtual DbSet<OrderDetail> OrderDetails { get; set; }
     protected override void OnModelCreating(DbModelBuilder modelBuilder)
     {
       modelBuilder.Entity<About>()
@@ -112,14 +113,14 @@ namespace Model.EF
           .IsUnicode(false);
 
       modelBuilder.Entity<Slide>()
-          .Property(e => e.CreatedBy) 
+          .Property(e => e.CreatedBy)
           .IsUnicode(false);
 
       modelBuilder.Entity<Slide>()
           .Property(e => e.ModifyBy)
           .IsUnicode(false);
       modelBuilder.Entity<Logo>()
-          .Property(e => e.CreatedBy) 
+          .Property(e => e.CreatedBy)
           .IsUnicode(false);
 
       modelBuilder.Entity<Logo>()
@@ -153,6 +154,9 @@ namespace Model.EF
       modelBuilder.Entity<User>()
           .Property(e => e.ModifyBy)
           .IsUnicode(false);
+      modelBuilder.Entity<OrderDetail>()
+          .Property(e => e.Price)
+          .HasPrecision(18, 0);
     }
   }
 }

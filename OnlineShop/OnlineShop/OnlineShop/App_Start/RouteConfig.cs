@@ -21,7 +21,12 @@ namespace OnlineShop
           defaults: new { controller = "Home", action = "ProductDetail", id = UrlParameter.Optional },
           namespaces: new[] { "OnlineShop.Controllers" }
       );
-
+      routes.MapRoute(
+          name: "AddCart",
+          url: "addproduct",
+          defaults: new { controller = "Cart", action = "AddToCart", id = UrlParameter.Optional },
+          namespaces: new[] { "OnlineShop.Controllers" }
+      );
       routes.MapRoute(// luon luon phai de xuong cuoi cung, khi chay qua het maprout thi se chay default
           name: "Default",
           url: "{controller}/{action}/{id}",
