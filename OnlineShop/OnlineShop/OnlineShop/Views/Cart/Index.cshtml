@@ -3,6 +3,9 @@
     ViewBag.Title = "Cart";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section footerScript{
+    <script src="/Asset/js/CartController/CartScript.js"></script>
+}
 <h2>Cart detail</h2>
 <div class="main">
     <div class="content">
@@ -20,36 +23,39 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td><a href="~/detail/@item.Product.MetaKeyword-@item.Product.ID">@item.Product.Name</a></td>
-                            <td><img src="@item.Product.Avatar" width="100" /></td>
-                            <td>
-                                <input type="text" value="@item.Quantity" id="cartQuantity" />
-                                <button id="increase" class="btn btn-circle"><span style="font-weight:bold; color:red">+</span></button>
-                                <button id="decrease" class="btn btn-circle"><span style="font-weight:bold; color:red">-</span></button>
-                            </td>
-                            <td>@item.Product.Price.GetValueOrDefault().ToString("N0")</td>
-                            <td>@((item.Product.Price.GetValueOrDefault()*item.Quantity).ToString("N0"))</td>
-                            <td>
-                                 @Ajax.ActionLink("Delete", "Delete", new { id = item.Product.ID }, new AjaxOptions
-                                   {
-                                       Confirm = "Do you want to delete?",
-                                       OnComplete = "$('#row_" + item.Product.ID + "').remove()",
-                                       HttpMethod = "Delete"
-                                   })
-                            </td>
-                        </tr>
+                    @{int i = 0;
+                        foreach (var item in Model)
+                        {
+                            i++;
+
+                            <tr>
+                                <td><a href="~/detail/@item.Product.MetaKeyword-@item.Product.ID">@item.Product.Name</a></td>
+                                <td><img src="@item.Product.Avatar" width="100" /></td>
+                                <td>
+                                    <input type="text" value="@item.Quantity" data-id="@item.Product.ID" class="quantity" />
+                                    <button id="btnAdd-@i" class="btnIncrease" data-id="@item.Product.ID"><span style="font-weight:bold; color:red">+</span></button>
+                                    <button class="btn btn-circle btnDecrease" data-id="@item.Product.ID"><span style="font-weight:bold; color:red">-</span></button>
+                                </td>
+                                <td data-id="@item.Product.ID" class="price">@item.Product.Price.GetValueOrDefault().ToString("N0")</td>
+                                <td data-id="@item.Product.ID"  class="amount">@((item.Product.Price.GetValueOrDefault() * item.Quantity).ToString("N0"))</td>
+                                <td>
+                                    @Ajax.ActionLink("Delete", "Delete", new { id = item.Product.ID }, new AjaxOptions
+                               {
+                                   Confirm = "Do you want to delete?",
+                                   OnComplete = "$('#row_" + item.Product.ID + "').remove()",
+                                   HttpMethod = "Delete"
+                               })
+                                </td>
+                            </tr>
+                        }
                     }
-                    
                 </tbody>
             </table>
         }
         else
         {
             <span>The is no item in cart!</span>
-            }
+        }
 
     </div>
 </div>

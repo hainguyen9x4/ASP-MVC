@@ -71,5 +71,29 @@ namespace OnlineShop.Controllers
       }
       return View();
     }
+    public JsonResult ChangeQuantity(int id)
+    {
+      bool ret = false;
+      var list = (List<CartItem>)Session[CommonConstant.CART];
+      var q = 0;
+      if (list.Exists(x => x.Product.ID == id))
+      {
+        var p = new ProductDao().GetProductFromID(id);
+        foreach (var item in list)
+        {
+          if (item.Product.ID == id && item.Quantity + 1 <= p.Quanlity)
+          {
+            ret = true;
+            item.Quantity++;
+            q = (int)(item.Quantity* item.Product.Price);
+          }
+        }
+      }
+      return Json(new
+      {
+        number = q.ToString("N0"),
+        result = ret
+      });
+    }
   }
 }

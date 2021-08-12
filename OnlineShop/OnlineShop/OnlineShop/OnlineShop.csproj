@@ -2783,6 +2783,7 @@
     <Content Include="Asset\images\value-rating.png" />
     <Content Include="Asset\images\wishlist.png" />
     <Content Include="Asset\js\bootstrap.min.js" />
+    <Content Include="Asset\js\CartController\CartScript.js" />
     <Content Include="Asset\js\easing.js" />
     <Content Include="Asset\js\easyResponsiveTabs.js" />
     <Content Include="Asset\js\jquery-1.7.2.min.js" />
