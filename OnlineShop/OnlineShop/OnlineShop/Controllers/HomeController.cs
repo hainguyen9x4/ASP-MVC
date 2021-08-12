@@ -1,4 +1,7 @@
 ﻿using Model.Dao;
+using OnlineShop.Common;
+using OnlineShop.Models;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace OnlineShop.Controllers
@@ -87,6 +90,16 @@ namespace OnlineShop.Controllers
     {
       var model = new LogoDao().GetFirstEnableLogo();
       return PartialView(model);
+    }
+    [ChildActionOnly]
+    public ActionResult Cart()
+    {
+      List<CartItem> list = new List<CartItem>();
+      if (Session[CommonConstant.CART] != null)
+      {
+        list = (List<CartItem>)Session[CommonConstant.CART];
+      }
+      return PartialView(list);
     }
   }
 }

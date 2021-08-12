@@ -25,7 +25,10 @@
                         <tr>
                             <td><a href="~/detail/@item.Product.MetaKeyword-@item.Product.ID">@item.Product.Name</a></td>
                             <td><img src="@item.Product.Avatar" width="100" /></td>
-                            <td> <input type="text" value="@item.Quantity" id="cartQuantity"/>
+                            <td>
+                                <input type="text" value="@item.Quantity" id="cartQuantity" />
+                                <button id="increase" class="btn btn-circle"><span style="font-weight:bold; color:red">+</span></button>
+                                <button id="decrease" class="btn btn-circle"><span style="font-weight:bold; color:red">-</span></button>
                             </td>
                             <td>@item.Product.Price.GetValueOrDefault().ToString("N0")</td>
                             <td>@((item.Product.Price.GetValueOrDefault()*item.Quantity).ToString("N0"))</td>

@@ -5,25 +5,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using OnlineShop.Common;
 
 namespace OnlineShop.Controllers
 {
 
   public class CartController : Controller
   {
-    private const string cart = "CartSession";
     // GET: Cart
     public ActionResult Index()
     {
-      var list = (List<CartItem>)Session[cart];
+      var list = (List<CartItem>)Session[CommonConstant.CART];
       return View(list);
     }
     public ActionResult AddToCart(long productID, int quantity)
     {
       var p = new ProductDao().GetProductFromID(productID);
-      if (Session[cart] != null)
+      if (Session[CommonConstant.CART] != null)
       {
-        var list = (List<CartItem>)Session[cart];
+        var list = (List<CartItem>)Session[CommonConstant.CART];
         if (list.Exists(x => x.Product.ID == productID))
         {
           foreach (var item in list)
@@ -39,22 +39,22 @@ namespace OnlineShop.Controllers
         {
           list.Add(new CartItem(p, quantity));
         }
-        Session[cart] = list;
+        Session[CommonConstant.CART] = list;
       }
       else
       {
         var listItem = new List<CartItem>();
         listItem.Add(new CartItem(p, quantity));
-        Session[cart] = listItem;
+        Session[CommonConstant.CART] = listItem;
       }
       return RedirectToAction("Index");
     }
     [HttpDelete]
     public ActionResult Delete(int id)
     {
-      if (Session[cart] != null)
+      if (Session[CommonConstant.CART] != null)
       {
-        var list = (List<CartItem>)Session[cart];
+        var list = (List<CartItem>)Session[CommonConstant.CART];
         if (list.Exists(x => x.Product.ID == id))
         {
           foreach (var item in list)
@@ -65,7 +65,7 @@ namespace OnlineShop.Controllers
               break;
             }
           }
-          Session[cart] = list;
+          Session[CommonConstant.CART] = list;
           return RedirectToAction("Index");
         }
       }

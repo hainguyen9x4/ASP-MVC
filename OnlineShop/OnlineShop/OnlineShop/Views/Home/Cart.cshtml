@@ -1,0 +1,28 @@
+﻿@model List<OnlineShop.Models.CartItem>
+<div class="cart">
+    <p>
+        @{int sum = 0;
+            foreach (var item in Model)
+            {
+                sum += (int)(item.Quantity * item.Product.Price);
+            }
+        }
+        Welcome to our Online Store! <span><a href="/Cart">Cart:</a></span><div id="dd" class="wrapper-dropdown-2">
+            @(sum > 0?Model.Count.ToString():"0") item(s) - @sum.ToString("N0")
+            <ul class="dropdown">
+                @if (sum > 0)
+                {
+                    foreach (var item in Model)
+                    {
+                        <li>@item.Product.Name   <span>x</span>@item.Quantity <span>-</span>@((item.Quantity*item.Product.Price).Value.ToString("N0"))</li>
+                    }
+                }
+                else
+                {
+                    <li>you have no items in your Shopping cart</li>
+                }
+
+            </ul>
+        </div>
+    </p>
+</div>
