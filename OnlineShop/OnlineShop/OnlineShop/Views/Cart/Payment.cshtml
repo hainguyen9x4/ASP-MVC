@@ -1,0 +1,118 @@
+﻿@model Model.EF.Order
+
+@{
+    ViewBag.Title = "Payment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var carts = (List<OnlineShop.Models.CartItem>)ViewBag.CartData;
+    var amounts = new List<int>();
+}
+<div class="content">
+    @if (carts != null)
+    {
+        <table class="table table-bordered dataTable-table">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Image</td>
+                    <td>Quantity</td>
+                    <td>Price</td>
+                    <td>Amount</td>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in carts)
+                {
+                    <tr>
+                        <td><a href="~/detail/@item.Product.MetaKeyword-@item.Product.ID">@item.Product.Name</a></td>
+                        <td><img src="@item.Product.Avatar" width="100" /></td>
+                        <td>
+                            <span>@item.Quantity</span>
+                        </td>
+                        <td>@item.Product.Price.GetValueOrDefault().ToString("N0")</td>
+                        @{amounts.Add((int)(item.Product.Price.GetValueOrDefault() * item.Quantity));
+                        }
+                        <td>@((item.Product.Price.GetValueOrDefault() * item.Quantity).ToString("N0"))</td>
+                    </tr>
+                }
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Total:</td>
+                    <td>
+                        @{ var sum = 0;
+                            foreach (var val in amounts)
+                            {
+                                sum += val;
+                            }
+                        }
+                        <span id="totalAmount">@sum.ToString("N0")</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <span class="btn btn-success">@Html.ActionLink("Back to Cart", "Index")</span>
+        using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h3>Fill your information:</h3>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                @*<div class="form-group">
+                        @Html.LabelFor(model => model.CustomerID, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.CustomerID, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.CustomerID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="ShipName"> Your name</label>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.ShipName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ShipName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ShipAddr, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.ShipAddr, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ShipAddr, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ShipMail, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.ShipMail, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ShipMail, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ShipPhone, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.ShipPhone, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ShipPhone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Submit" class="btn btn-success" />
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div>Cart is empty, Nothing to payment</div>
+        <span class="btn btn-success">@Html.ActionLink("Back to Home", "Index", "Home")</span>
+    }
+</div>

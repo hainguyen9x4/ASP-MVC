@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using OnlineShop.Common;
+using Model.EF;
 
 namespace OnlineShop.Controllers
 {
@@ -147,6 +148,44 @@ namespace OnlineShop.Controllers
         result = ret,
         totalAmount = total.ToString("N0")
       });
+    }
+    [HttpGet]
+    public ActionResult Payment()
+    {
+      ViewBag.CartData = (List<CartItem>)Session[CommonConstant.CART];
+      return View();
+    }
+    [HttpPost]
+    public ActionResult Payment(Order data)
+    {
+      data.CreatedDate = DateTime.Now;
+      data.CustomerID = 0;
+      var dao = new OrderDao();
+      var id = dao.Insert(data);
+      var daoDetail = new OrderDetailDao();
+      var list = (List<CartItem>)Session[CommonConstant.CART];
+      try
+      {
+        foreach (var item in list)
+        {
+          var detail = new OrderDetail();
+          detail.OrderID = id;
+          detail.ProductID = item.Product.ID;
+          detail.Price = item.Product.Price;
+          detail.Quantity = item.Quantity;
+          daoDetail.Insert(detail);
+        }
+      }
+      catch
+      {
+        //ghi log
+        return Redirect("ErrorPage");//sho thongtin loi
+      }
+      return Redirect("/success-payment");
+    }
+    public ActionResult SuccessPayment()
+    {
+      return View();
     }
   }
 }
