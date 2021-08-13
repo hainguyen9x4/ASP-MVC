@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Cart";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var amounts = new List<int>();
 }
 @section footerScript{
     <script src="/Asset/js/CartController/CartScript.js"></script>
@@ -24,6 +25,7 @@
                 </thead>
                 <tbody>
                     @{int i = 0;
+
                         foreach (var item in Model)
                         {
                             i++;
@@ -36,8 +38,10 @@
                                     <button id="btnAdd-@i" class="btn btn-circle btnIncrease" data-id="@item.Product.ID"><span style="font-weight:bold; color:red">+</span></button>
                                     <button id="btnSub-@i" class="btn btn-circle btnDecrease" data-id="@item.Product.ID"><span style="font-weight:bold; color:red">-</span></button>
                                 </td>
-                                <td data-id="@item.Product.ID" class="price">@item.Product.Price.GetValueOrDefault().ToString("N0")</td>
-                                <td data-id="@item.Product.ID"  class="amount">@((item.Product.Price.GetValueOrDefault() * item.Quantity).ToString("N0"))</td>
+                                <td data-id="@item.Product.ID" class="price" >@item.Product.Price.GetValueOrDefault().ToString("N0")</td>
+                                @{amounts.Add((int)(item.Product.Price.GetValueOrDefault() * item.Quantity));
+                                }
+                                <td data-id="@item.Product.ID" class="amount">@((amounts[i - 1]).ToString("N0"))</td>
                                 <td>
                                     @Ajax.ActionLink("Delete", "Delete", new { id = item.Product.ID }, new AjaxOptions
                                {
@@ -49,6 +53,22 @@
                             </tr>
                         }
                     }
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Total:</td>
+                        <td>
+                            @{ var sum = 0;
+                                foreach (var val in amounts)
+                                {
+                                    sum += val;
+                                }
+                            }
+                            <span id="totalAmount">@sum.ToString("N0")</span>
+                        </td>
+                        <td></td>
+                    </tr>
                 </tbody>
             </table>
         }
@@ -56,6 +76,5 @@
         {
             <span>The is no item in cart!</span>
         }
-
     </div>
 </div>

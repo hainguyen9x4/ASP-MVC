@@ -74,6 +74,7 @@ namespace OnlineShop.Controllers
     public JsonResult ChangeQuantity(int id)
     {
       bool ret = false;
+      var total = 0;
       var list = (List<CartItem>)Session[CommonConstant.CART];
       var q = 0;
       if (list.Exists(x => x.Product.ID == id))
@@ -88,11 +89,17 @@ namespace OnlineShop.Controllers
             q = (int)(item.Quantity * item.Product.Price);
           }
         }
+        foreach (var item in list)
+        {
+          total += (int)(item.Quantity * item.Product.Price);
+        }
       }
+
       return Json(new
       {
         number = q.ToString("N0"),
-        result = ret
+        result = ret,
+        totalAmount = total.ToString("N0")
       });
     }
     public JsonResult ChangeSubQuantity(int id)
@@ -100,6 +107,7 @@ namespace OnlineShop.Controllers
       bool ret = false;
       var list = (List<CartItem>)Session[CommonConstant.CART];
       var q = 0;
+      var total = 0;
       if (list.Exists(x => x.Product.ID == id))
       {
         var p = new ProductDao().GetProductFromID(id);
@@ -128,11 +136,16 @@ namespace OnlineShop.Controllers
           ret = true;
           list.RemoveAt(j);
         }
+        foreach (var item in list)
+        {
+          total += (int)(item.Quantity * item.Product.Price);
+        }
       }
       return Json(new
       {
         number = q.ToString("N0"),
-        result = ret
+        result = ret,
+        totalAmount = total.ToString("N0")
       });
     }
   }

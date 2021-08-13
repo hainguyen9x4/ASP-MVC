@@ -11,7 +11,7 @@
                 var btn = $(this).data('id');
                 var Id = $('input.quantity[data-id=' + btn + ']').data('id');
                 //alert("Id=  :" + Id);
-                console.log(btn);
+                //console.log(btn);
                 $.ajax({
                     url: "Cart/ChangeQuantity",
                     dataType: "json",
@@ -22,6 +22,9 @@
                             $('.amount[data-id=' + btn + ']').html(response.number);
                             var q = parseInt($('input.quantity[data-id=' + btn + ']').val());
                             $('.quantity[data-id=' + btn + ']').prop("value", q + 1);
+                            ///Update total amount
+                            $('#totalAmount').html(response.totalAmount);
+
                         } else {
                             alert("Cannot add more product!");
                             //disable the add button
@@ -46,6 +49,8 @@
                             }
                             $('.amount[data-id=' + btn + ']').html(response.number);
                             $('.quantity[data-id=' + btn + ']').prop("value", q - 1);
+                            ///Update total amount
+                            $('#totalAmount').html(response.totalAmount);
                         } else {
                             alert("Cannot add more product!");
                             //disable the sub button
@@ -53,7 +58,6 @@
                     }
                 })
             })
-
         }
     }
 }
