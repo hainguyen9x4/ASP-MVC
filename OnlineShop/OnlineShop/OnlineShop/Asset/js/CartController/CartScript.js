@@ -9,7 +9,7 @@
             i++;
             $('#btnAdd-' + i).click(function () {
                 var btn = $(this).data('id');
-                var Id = $('input.quantity[data-id=' + btn +']').data('id');
+                var Id = $('input.quantity[data-id=' + btn + ']').data('id');
                 //alert("Id=  :" + Id);
                 console.log(btn);
                 $.ajax({
@@ -21,35 +21,40 @@
                         if (response.result) {
                             $('.amount[data-id=' + btn + ']').html(response.number);
                             var q = parseInt($('input.quantity[data-id=' + btn + ']').val());
-                            $('.quantity[data-id=' + btn + ']').prop("value",q+1);
+                            $('.quantity[data-id=' + btn + ']').prop("value", q + 1);
                         } else {
                             alert("Cannot add more product!");
-                            //disable theadd button
+                            //disable the add button
                         }
                     }
                 })
             })
+            // --
+            $('#btnSub-' + i).click(function () {
+                var btn = $(this).data('id');
+                var Id = $('input.quantity[data-id=' + btn + ']').data('id');
+                var q = parseInt($('input.quantity[data-id=' + btn + ']').val());
+                $.ajax({
+                    url: "Cart/ChangeSubQuantity",
+                    dataType: "json",
+                    type: "POST",
+                    data: { id: Id },
+                    success: function (response) {
+                        if (response.result) {
+                            if (response.number == 0) {
+                                window.location.href = "/Cart";
+                            }
+                            $('.amount[data-id=' + btn + ']').html(response.number);
+                            $('.quantity[data-id=' + btn + ']').prop("value", q - 1);
+                        } else {
+                            alert("Cannot add more product!");
+                            //disable the sub button
+                        }
+                    }
+                })
+            })
+
         }
-        //$('.btnIncrease').click(function () {
-        //    var Id = $('.btnIncrease').data('id');
-        //    var str = Id.toString();
-        //    var q = $('.quantity[data-id=' + str + ']');
-        //    $.ajax({
-        //        url: "Cart/ChangeQuantity",
-        //        dataType: "json",
-        //        type: "POST",
-        //        data: { id: Id },
-        //        success: function (response) {
-        //            if (response.result) {
-        //                $('.amount[data-id=' + str + ']').html(response.number);
-        //                $('.quantity[data-id=' + str + ']').val(q+1);
-        //            } else {
-        //                alert("Cannot add more product!");
-        //                //disable theadd button
-        //            }
-        //        }
-        //    })
-        //})
     }
 }
 cart.init();
