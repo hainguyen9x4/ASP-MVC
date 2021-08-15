@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var srt = "Javascript is very easy! javaa"
+        var patt = new RegExp("java","i");
+        var patt2 = /java/ig;
+        var ret = srt.match(patt2);
+        //document.write(ret);
+        //Loai khoang trang du thua
+        var str = "  Nguyen  van  hai  ";
+        var patt1 = /^ /;
+        // var index = str.match(patt1);
+        // while(index != null){
+        //     str=str.substring(1,str.length);
+        //     index = str.match(patt1);
+        // }
+        str = str.replace(/^\s+/,'');
+        var patt2 = / $/;
+        // index = str.match(patt2);
+        // while(index != null){
+        //     str=str.substring(0,str.length-1);
+        //     index = str.match(patt2);
+        // }
+        str = str.replace(/\s+$/,'');
+        var patt3 = /  /;
+        // index = str.indexOf(patt3);
+        // while(index >0 ){
+        //     str=str.substring(0,index)+str.substring(index,str.length);
+        //     index = str.match(patt3);
+        // }
+        str = str.replace(/\s+/,' ');
+        console.log("'"+str+"'");
+    </script>
+</head>
+<body>
+    <h1>This the content of web</h1>
+    <h2>Hello world!</h2>
+</body>
+</html>

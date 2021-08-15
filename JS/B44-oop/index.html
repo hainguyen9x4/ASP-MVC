@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function myFcun(){
+            alert("myFucntion1");
+            this.method2 = function(a,b){
+                return a+b;
+            }
+        };
+        var value =new myFcun();
+        console.log(value.method2(2,3));
+        //var f =myFcun();
+        var func ={
+            init: function(){
+                alert("myFucntion1");
+            },
+            FuncSum :function(a,b){
+                return a+b;
+            }
+        };
+
+        console.log(func.FuncSum(1,2));
+        //func.init();
+        this.funtionX = function(){
+            this.msg ="This is message!";
+            var msg2="Private";
+            this.methodx=function(mes){
+                alert("method of functionX: "+mes);
+            };
+            this.getMsg2 = getMsg2;
+            function getMsg2(){
+                return msg2;
+            }
+        };
+        
+        var f =new funtionX();
+        console.log(f.msg);
+        console.log(f.getMsg2());
+        f.methodx("hello");
+    </script>
+</head>
+<body>
+    <h1>This the content of web</h1>
+    <h2>Hello world!</h2>
+</body>
+</html>

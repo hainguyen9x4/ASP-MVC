@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        this.functionX = function(){
+            this.msg ="This is message!";
+            var msg2="Private";
+            this.methodx=function(mes){
+                alert("method of functionX: "+mes);
+            };
+            this.getMsg2 = getMsg2;
+            function getMsg2(){
+                return msg2;
+            }
+            this.getMsg = getMsg;
+            function getMsg(){
+                return msg;
+            }
+        };
+        //ob con ke thua tu functionX
+        //var f = new functionX();
+        this.functionXChild = function(){
+            functionX.call(this);
+            this.msg2="Private";//ko dung dk bien private
+            msg="PrivateChildnnn";
+        }
+        var fChild = new functionXChild();
+        //fChild.methodx("Child message");
+        console.log(fChild.getMsg2());
+    </script>
+</head>
+<body>
+    <h1>This the content of web</h1>
+    <h2>Hello world!</h2>
+</body>
+</html>

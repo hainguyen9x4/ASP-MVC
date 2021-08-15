@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var arr = new Array(1,2,3,6,7,8,9);
+        var arr2= [12,14,15];
+        //Kiem tra 1 pt co trong arr hay ko, neu ko thi them vao cuoi
+        if(arr.indexOf(11)<0){
+            arr.push(arr2);
+        }
+        console.log(arr);
+        //
+        var arr3 = new Array(1,1,2,2,3,3,3,3,3,8,9,7,6,6,7,8,9);
+        var tem = [];
+        // for( i in arr3){
+        //     if(tem.indexOf(arr3[i])<0){
+        //         tem.push(arr3[i]);
+        //     }
+        // }
+        arr3.forEach(element => {
+            if(tem.indexOf(element)<0){
+                tem.push(element);
+            }
+        });
+        console.log(tem);
+
+        document.write("<hr/>");
+        var student = [
+            {"name":"Nguyen 1","age":12,"gender":1,"Score":[1,7,9]},
+            {"name":"Nguyen 2","age":13,"gender":0,"Score":[6,5,7]},
+            {"name":"Nguyen 3","age":14,"gender":0,"Score":[9,4,10]},
+            {"name":"Nguyen 4","age":15,"gender":1,"Score":[6,3,0]}
+        ];
+        for(item in student){
+             var temp=0;
+            for(i in student[item].Score){
+                temp +=student[item].Score[i];
+            }
+            student[item].Score = (temp/student[item].Score.length).toFixed(1);
+        }
+        console.log(student);
+    </script>
+</head>
+<body>
+    <h1>This the content of wweb</h1>
+    <h2>Hello world!</h2>
+</body>
+</html>

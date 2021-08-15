@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        Number.prototype.MaxNumber = function(){
+            var number =this.valueOf();
+            var max = 0;
+            while(number > 0){
+                var temp_max = number % 10;             
+                if(max < temp_max) max = temp_max;
+                number =(number-temp_max)/10;
+            }
+            return max;
+        }
+        Number.prototype.RevervNumber = function(){
+            var number = this.valueOf();
+            var value =0;
+            var arr = new Array();
+            var index=0;
+            while(number > 0){
+                n=number % 10;
+               arr[index] = n;
+               number =(number-n)/10;
+               index++;
+            }
+            if(index>0){
+                index--;
+                for(var i=index;i>=0;i--){
+                    value += arr[i]*Math.pow(10,index-i);
+                }
+            }
+            return value;
+        }
+        Number.prototype.UCLL=function(n2){
+            var number = this.valueOf();
+            var n = n2 > number?number:n2;
+            for(var i = n;i>1;i--)
+                if(n2%i==0 &&number%i==0){
+                    return i;
+                }
+                return 1;
+            }   
+        function f1(){
+            var n = new Number(91234567);
+            console.log(n.MaxNumber());
+            console.log(n.RevervNumber());
+            n = new Number(12);
+            console.log(n.UCLL(21));
+        }
+        f1();
+    </script>
+</head>
+<body>
+    <h1>This the content of wweb</h1>
+    <h2>Hello world!</h2>
+</body>
+</html>
