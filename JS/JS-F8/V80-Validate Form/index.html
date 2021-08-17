@@ -5,33 +5,98 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="./js/jquery-3.6.0.min.js" type="text/javascript"></script>
+    <script src="./js/bootstrap.min.js" type="text/javascript"></script>
+    <style>
+        * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  color: #333;
+  font-size: 62.5%;
+  font-family: "Open Sans", sans-serif;
+}
+.main {
+  background: #f1f1f1;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+.form {
+  width: 360px;
+  min-height: 100px;
+  padding: 32px 24px;
+  
+  background: #fff;
+  border-radius: 2px;
+  margin: 24px;
+  align-self: center;
+  box-shadow: 0 2px 5px 0 rgba(51, 62, 73, 0.1);
+}
+.form .heading {
+  font-size: 2rem;
+  text-align: center;
+}
+.form .btn {
+  align-content: center;
+}
+.invalid {
+    color: red;
+}
+    </style>
 </head>
 <body>
     <div class="main">
         <form action="" class="form" id="form-1" method="POST">
+            <h3 class="heading">Register</h3>
+            <div class="spacer"></div>
             <div class="form-group">
                 <label for=fullname"" class="form-label">Full name</label>
-                <input type="text" id="fullname" name="fullname" placeholder="Nguyễn Văn Anh">
-                <span class="form-mes"></span>
+                <input type="text" id="fullname" class="form-control" name="fullname" placeholder="Nguyễn Văn Anh">
+                <span class="form-message"></span>
             </div>
             <div class="form-group">
                 <label for="email" class="form-label">Email</label>
-                <input type="text" id="email" name="email" placeholder="Email@gmail.com">
-                <span class="form-mes"></span>
+                <input type="text" id="email" name="email" class="form-control" placeholder="Email@gmail.com">
+                <span class="form-message"></span>
             </div>
             <div class="form-group">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" id="password" name="password" placeholder="Password">
-                <span class="form-mes"></span>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Password">
+                <span class="form-message"></span>
             </div>
             <div class="form-group">
                 <label for="re-password" class="form-label">Re-password</label>
-                <input type="password" id="re-password" name="re-password" placeholder="Re-password">
-                <span class="form-mes"></span>
+                <input type="password" id="re-password" name="re-password" class="form-control" placeholder="Re-password">
+                <span class="form-message"></span>
             </div>
+            <input type="button" class="btn btn-primary" value="Register">
         </form>
     </div>
     <script src="./validator.js"></script>
+    <script>
+        Validator(
+            {
+                form: '#form-1',
+                formGroupSelector: '.form-group',
+                selectorMesError: '.form-message',
+                rules: [
+                            Validator.isRequired('#fullname'),
+                            Validator.isEmail('#email','Ban phai nhap email'),
+                            Validator.isRequired('#password'),
+                            Validator.validateLength('#password', 6, 8),
+                            Validator.isConfirm('#re-password',function(){
+                                return document.querySelector('#form-1 #password').value;
+                            },'')
+                        ]
+            }
+        );
+    </script>
 </body>
 </html>
