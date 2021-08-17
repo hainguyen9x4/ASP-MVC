@@ -1,11 +1,19 @@
 
+var selectorRules ={};// 
+
 function Validator(option) {
 /*
 Validate the input element
 */
     function validateInput(elementInput,rule,elementMsg){
-        var mes = rule.test(elementInput.value);
+        var mes;
         //console.log("mes in validateInput func: "+mes);
+        
+        var rules = selectorRules[rule.selector];//lấy các rule của 1 slector cụ thể
+        for(var i=0 ;i< rules.length;i++){// duyệt qua các rule của selector
+            mes = rules[i](elementInput.value);// thực hiện rule và trả về message
+            if(mes) break;
+        }
         if(mes){
             if(elementMsg){
                 elementMsg.innerText = mes;
@@ -17,11 +25,17 @@ Validate the input element
     var elementForm = document.querySelector(option.form);
 
     if(elementForm){
-        option.rules.forEach(function(item) {
-            var inputElement = elementForm.querySelector(item.selector);
+        option.rules.forEach(function(rule) {
+            
+            if(Array.isArray(selectorRules[rule.selector])){
+                selectorRules[rule.selector].push(rule.test);// lan tiep theo them vao mang
+            }else{
+                selectorRules[rule.selector] =[rule.test]//lan dau tien chua là mảng, se khoi tao mang
+            }
+            var inputElement = elementForm.querySelector(rule.selector);
             var elementMsg = inputElement.parentElement.querySelector(option.selectorMesError);
             inputElement.onblur = function(){
-                validateInput(inputElement,item,elementMsg);
+                validateInput(inputElement,rule,elementMsg);
             }
             inputElement.oninput = function(){
                 elementMsg.innerText = '';

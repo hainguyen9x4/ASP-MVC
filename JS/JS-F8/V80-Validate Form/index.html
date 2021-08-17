@@ -88,12 +88,13 @@ html {
                 selectorMesError: '.form-message',
                 rules: [
                             Validator.isRequired('#fullname'),
+                            Validator.isRequired('#email'),
                             Validator.isEmail('#email','Ban phai nhap email'),
                             Validator.isRequired('#password'),
                             Validator.validateLength('#password', 6, 8),
                             Validator.isConfirm('#re-password',function(){
                                 return document.querySelector('#form-1 #password').value;
-                            },'')
+                            })
                         ]
             }
         );
