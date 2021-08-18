@@ -53,6 +53,7 @@ Validate the input element
             else{
                 elementForm.onsubmit();
             }
+        }
         };
         //Lap qua cac rule để gán event cho mỗi rule
         option.rules.forEach(function(rule) {
