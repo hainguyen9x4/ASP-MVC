@@ -76,7 +76,7 @@ html {
                 <input type="password" id="re-password" name="re-password" class="form-control" placeholder="Re-password">
                 <span class="form-message"></span>
             </div>
-            <input type="button" class="btn btn-primary" value="Register">
+            <input type="submit" id="btnCommit" class="btn btn-primary" value="Register">
         </form>
     </div>
     <script src="./validator.js"></script>
@@ -88,14 +88,18 @@ html {
                 selectorMesError: '.form-message',
                 rules: [
                             Validator.isRequired('#fullname'),
-                            Validator.isRequired('#email'),
+                            Validator.isRequired('#email'),// e mail cos 2 validate
                             Validator.isEmail('#email','Ban phai nhap email'),
                             Validator.isRequired('#password'),
                             Validator.validateLength('#password', 6, 8),
+                            Validator.isRequired('#re-password'),
                             Validator.isConfirm('#re-password',function(){
                                 return document.querySelector('#form-1 #password').value;
-                            })
-                        ]
+                            }),
+                        ],
+                        onSubmit: function(data){
+                            console.log(data);
+                        }
             }
         );
     </script>
