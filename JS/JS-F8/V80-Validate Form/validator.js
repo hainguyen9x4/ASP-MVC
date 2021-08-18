@@ -18,6 +18,9 @@ Validate the input element
                 elementMsg.classList.add('invalid');
                 isError = false;
             }
+        }else{
+            elementMsg.innerText = '';
+            elementMsg.classList.add('invalid');           
         }
         return !mes;
     }
@@ -68,6 +71,7 @@ Validate the input element
             var inputElement = elementForm.querySelector(rule.selector);
             var elementMsg = inputElement.parentElement.querySelector(option.selectorMesError);
             inputElement.onblur = function(){
+                console.log("inputElement.value: "+inputElement.value);
                 validateInput(inputElement,rule,elementMsg);
             }
             inputElement.oninput = function(){
