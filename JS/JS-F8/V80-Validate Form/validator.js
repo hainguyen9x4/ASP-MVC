@@ -1,4 +1,26 @@
+/*
+Validate funtion
+-parameter: option is a object:
++ form: id from need validate
++ selectorMesError: class name of message element in each form
+(in form has many form-group)
++ rules: [// a array of function
+            Validator.isRequired('#fullname'),//validate cho cac trường bắt buộc
+            Validator.isRequired('#email'),// e mail cos 2 validate
+            Validator.isEmail('#email','Ban phai nhap email'),//email
+            Validator.isRequired('#password'),
+            Validator.validateLength('#password', 6, 8),// độ dài của trường
+            Validator.isRequired('#re-password'),
+            Validator.isConfirm('#re-password',function(){// lặp lại 1 trường nào đó
+                return document.querySelector('#form-1 #password').value;
+            }),
+        ],
++ onSubmit: function(data){// function of event submit button, 
+                            this is option cause can use the defualt event of form
+            console.log(data);
+        }
 
+ * /
 function Validator(option) {
     var selectorRules ={};// 
 /*
@@ -80,12 +102,31 @@ Validate the input element
             }
         });
     }
+    /*
+    gat parent element of element,
+    param: 
+    +element: child element 
+    +parentName: Name of parent element 
+    Return: parent element of element, or null if not exit the parent as parentName
+    */
+    function getParent(element, parentName){
+            while(element.parentElement){
+                if(element.parentElement.matches(parentName))
+                {
+                    return element.parentElement;
+                }
+                element = element.parentElement;
+            }
+        }
+    }
 }
 /*
 Validate the input element
 selector: selecter truyen vao
 mesError: custom error, nếu ko truyên thì dùng mặc định là 'This field is required!'
 Mỗi thằng sẽ cách verify khác nhau -> có 1 hàm test khác nhau
++return là 1 object
++hàm test là hàm cụ thể thực hiện verify chi tiết, mỗi trường sẽ có hàm test thực hiện khác nhau
 */
 Validator.isRequired = function(selector, mesError){
     return {
