@@ -35,10 +35,9 @@ Validate the input element
         for(var i=0 ;i< rules.length;i++){// duyệt qua các rule của selector
             switch (elementInput.type) {
                 case 'radio':
-                    mes = rules[i](elementForm.querySelector(rule.selector+':checked'));
-                    break;
                 case 'checkbox':
-                    
+                    //console.log(elementForm.querySelector(rule.selector+':checked'));
+                    mes = rules[i](elementForm.querySelector(rule.selector+':checked'));
                     break;           
                 default:
                     mes = rules[i](elementInput.value);// thực hiện rule và trả về message
@@ -85,10 +84,20 @@ Validate the input element
                 var formValues = Array.from(enableInputs).reduce(function(values,item){
                     switch(item.type){
                         case 'radio':
-                            values[item.name] = elementForm.querySelector('input[name="'+item.name+'"]:checked').value;
+                            values[item.name]='';
+                            if(item.matches(':checked')){
+                                values[item.name]=item.value;
+                            }
+                            //values[item.name] = elementForm.querySelector('input[name="'+item.name+'"]:checked').value;
                             break;
                         case 'checkbox':
-        
+                            if(item.matches(':checked')){
+                            if(!Array.isArray(values[item.name])){
+                                values[item.name] =[];
+                            }
+                            values[item.name].push(item.value);
+                            }
+                            break;
                         default:
                             values[item.name]=item.value;
                             break;

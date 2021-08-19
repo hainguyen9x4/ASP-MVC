@@ -69,6 +69,13 @@ html {
                 <span class="form-message"></span>
             </div>
             <div class="form-group">
+                <label for=language"" class="form-label">Language</label>
+                <input type="checkbox" name="language" value="0">JavaScript
+                <input type="checkbox" name="language" value ="1">Php
+                <input type="checkbox" name="language" value ="2">C#
+                <span class="form-message"></span>
+            </div>
+            <div class="form-group">
                 <label for="email" class="form-label">Email</label>
                 <input type="text" id="email" name="email" class="form-control" placeholder="Email@gmail.com">
                 <span class="form-message"></span>
@@ -93,16 +100,17 @@ html {
                 form: '#form-1',
                 selectorMesError: '.form-message',
                 rules: [
-                            Validator.isRequired('#fullname'),
-                            Validator.isRequired('#email'),// e mail cos 2 validate
-                            Validator.isEmail('#email','Ban phai nhap email'),
-                            Validator.isRequired('#password'),
-                            Validator.validateLength('#password', 6, 8),
-                            Validator.isRequired('#re-password'),
-                            Validator.isConfirm('#re-password',function(){
-                               return document.querySelector('#form-1 #password').value;
-                            }),
-                            Validator.isRequired('input[name="gender"]')
+                            // Validator.isRequired('#fullname'),
+                            // Validator.isRequired('#email'),// e mail cos 2 validate
+                            // Validator.isEmail('#email','Ban phai nhap email'),
+                            // Validator.isRequired('#password'),
+                            // Validator.validateLength('#password', 6, 8),
+                            // Validator.isRequired('#re-password'),
+                            // Validator.isConfirm('#re-password',function(){
+                            //    return document.querySelector('#form-1 #password').value;
+                            // }),
+                            //Validator.isRequired('input[name="gender"]'),
+                            Validator.isRequired('input[name="language"]')
                         ],
                         onSubmit: function(data){
                             console.log(data);
