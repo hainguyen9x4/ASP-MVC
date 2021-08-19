@@ -20,7 +20,7 @@ Validate funtion
             console.log(data);
         }
 
- * /
+ */
 function Validator(option) {
     var selectorRules ={};// 
 /*
@@ -29,9 +29,22 @@ Validate the input element
 */
     function validateInput(elementInput,rule,elementMsg){
         var mes;
+        
         var rules = selectorRules[rule.selector];//lấy các rule của 1 slector cụ thể
+        
         for(var i=0 ;i< rules.length;i++){// duyệt qua các rule của selector
-            mes = rules[i](elementInput.value);// thực hiện rule và trả về message
+            switch (elementInput.type) {
+                case 'radio':
+                    mes = rules[i](elementForm.querySelector(rule.selector+':checked'));
+                    break;
+                case 'checkbox':
+                    
+                    break;           
+                default:
+                    mes = rules[i](elementInput.value);// thực hiện rule và trả về message
+                    break;
+            }
+            
             if(mes) break;
         }
         if(mes){
@@ -70,7 +83,18 @@ Validate the input element
                 var enableInputs = elementForm.querySelectorAll('[name]:not([disable])');//ko lay thang disable
                 //duyet tat ca để đưa vào object là 1 mảng các values
                 var formValues = Array.from(enableInputs).reduce(function(values,item){
-                    return (values[item.name]=item.value) && values;
+                    switch(item.type){
+                        case 'radio':
+                            values[item.name] = elementForm.querySelector('input[name="'+item.name+'"]:checked').value;
+                            break;
+                        case 'checkbox':
+        
+                        default:
+                            values[item.name]=item.value;
+                            break;
+                    }
+                    
+                    return values;
                 },{});
                 option.onSubmit(formValues);
             }
@@ -90,16 +114,18 @@ Validate the input element
                 selectorRules[rule.selector] =[rule.test]//lan dau tien chua là mảng, se khoi tao mang
             }
 
-            var inputElement = elementForm.querySelector(rule.selector);
-            var elementMsg = inputElement.parentElement.querySelector(option.selectorMesError);
-            inputElement.onblur = function(){
-                console.log("inputElement.value: "+inputElement.value);
-                validateInput(inputElement,rule,elementMsg);
-            }
-            inputElement.oninput = function(){
-                elementMsg.innerText = '';
-                elementMsg.classList.remove('invalid');                
-            }
+            var inputElements = elementForm.querySelectorAll(rule.selector);
+            Array.from(inputElements).forEach(inputElement => {
+                var elementMsg = inputElement.parentElement.querySelector(option.selectorMesError);
+                inputElement.onblur = function(){
+                    //console.log("inputElement.value: "+inputElement.value);
+                    validateInput(inputElement,rule,elementMsg);
+                }
+                inputElement.oninput = function(){
+                    elementMsg.innerText = '';
+                    elementMsg.classList.remove('invalid');                
+                } 
+            });
         });
     }
     /*
@@ -119,7 +145,6 @@ Validate the input element
             }
         }
     }
-}
 /*
 Validate the input element
 selector: selecter truyen vao

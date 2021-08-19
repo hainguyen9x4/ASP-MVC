@@ -62,6 +62,13 @@ html {
                 <span class="form-message"></span>
             </div>
             <div class="form-group">
+                <label for=gender"" class="form-label">Gender:</label>
+                <input type="radio" name="gender" value="1">Male
+                <input type="radio" name="gender" value ="0">Female
+                <input type="radio" name="gender" value ="2">Other
+                <span class="form-message"></span>
+            </div>
+            <div class="form-group">
                 <label for="email" class="form-label">Email</label>
                 <input type="text" id="email" name="email" class="form-control" placeholder="Email@gmail.com">
                 <span class="form-message"></span>
@@ -93,8 +100,9 @@ html {
                             Validator.validateLength('#password', 6, 8),
                             Validator.isRequired('#re-password'),
                             Validator.isConfirm('#re-password',function(){
-                                return document.querySelector('#form-1 #password').value;
+                               return document.querySelector('#form-1 #password').value;
                             }),
+                            Validator.isRequired('input[name="gender"]')
                         ],
                         onSubmit: function(data){
                             console.log(data);
