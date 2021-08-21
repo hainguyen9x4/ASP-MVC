@@ -1,0 +1,86 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "John1",
+      "email": "email@gmail.com"
+    },
+    {
+      "id": 2,
+      "name": "John2",
+      "email": "email@gmail.com"
+    },
+    {
+      "id": 3,
+      "name": "John3",
+      "email": "email@gmail.com"
+    },
+    {
+      "name": "hainguyen9x5",
+      "email": "hainguyen9x5@gmail,com",
+      "id": 4
+    },
+    {
+      "name": "hainguyen9x5",
+      "email": "hainguyen9x5",
+      "id": 5
+    },
+    {
+      "name": "Sửa Chữa",
+      "email": "hainguyen9x5",
+      "id": 6
+    },
+    {
+      "name": "Sửa Chữa",
+      "email": "hainguyen9x5",
+      "id": 7
+    },
+    {
+      "name": "Sửa Chữa",
+      "email": "hainguyen9x5",
+      "id": 8
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "id_user": 1,
+      "content": "John1 comment"
+    },
+    {
+      "id": 2,
+      "id_user": 2,
+      "content": "John1 comment"
+    },
+    {
+      "id": 3,
+      "id_user": 3,
+      "content": "John1 comment"
+    },
+    {
+      "content": "hainguyen9x5@gmail,com",
+      "id_user": 4,
+      "id": 4
+    },
+    {
+      "content": "hainguyen9x5",
+      "id_user": 5,
+      "id": 5
+    },
+    {
+      "content": "hainguyen9x5",
+      "id_user": 6,
+      "id": 6
+    },
+    {
+      "content": "hainguyen9x5",
+      "id_user": 7,
+      "id": 7
+    },
+    {
+      "content": "hainguyen9x5",
+      "id_user": 8,
+      "id": 8
+    }
+  ]
+}
