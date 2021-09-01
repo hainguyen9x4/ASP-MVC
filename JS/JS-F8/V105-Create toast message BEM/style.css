@@ -1,0 +1,79 @@
+#toast{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+.toast{
+    display: flex;
+    align-items: center;
+    background-color: aliceblue;
+    min-width: 400px;
+    max-width: 450px;
+    border-radius: 2px;
+    border-left: 4px solid red;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, .3);
+    margin-top: 20px;
+    line-height: 1.5;
+    animation: slideInLeft ease .3s, fadeOut linear 1.5s 4s forwards;
+}
+@keyframes slideInLeft{
+    from{
+        opacity: 0;
+        transform: translateX(calc(100% + 20px));/*Luc dau tien se an di, 100% la 450px*/
+    }
+    to{
+        opacity: 1;
+        transform(0);
+    }
+}
+@keyframes fadeOut{
+    to{
+    opacity: 0;
+    }
+}
+.toast--success .toast__icon{
+    color: #47d864;
+}
+.toast--warning .toast__icon{
+    color: #ffc021;
+}
+.toast--error .toast__icon{
+    color: red;
+}
+.toast--success{
+    border-color: #47d864;
+}
+.toast--warning{
+    border-color: #ffc021;
+}
+.toast--error{
+  border-color: red;
+}
+.toast__title{
+font-size: 16px;
+color: #333;
+font-weight: 600;
+}
+
+.toast__mes{
+  font-size: 14px;
+  color: #888;
+  margin-top:4px;
+ 
+}
+.toast__body{
+    flex-grow: 1;
+}
+.toast__icon{
+    font-size: 24px;
+}
+
+.toast__close{
+    font-size: 22px;
+    color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.toast__close,.toast__icon{
+    padding: 0 16px;
+}
