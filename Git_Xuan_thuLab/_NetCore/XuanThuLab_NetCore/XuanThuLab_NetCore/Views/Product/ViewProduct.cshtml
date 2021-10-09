@@ -1,0 +1,29 @@
+﻿
+@model XuanThuLab_NetCore.Models.ProductModel
+@{
+    ViewData["Title"] = "View product page";
+    Layout = "_Layout";
+    var p = ViewData["product"] as XuanThuLab_NetCore.Models.ProductModel;
+    var p2 = (XuanThuLab_NetCore.Models.ProductModel)ViewData["product"];
+    var notify = TempData["Notify"] as string;
+}
+@if (!String.IsNullOrEmpty(notify))
+{
+    <div class="alert alert-warning" role="alert">
+        @notify
+        abc: @TempData["Notify"]
+    </div>
+}
+else
+{
+    <div class="bg-danger text-white">
+        <h1 class="card-header">Tên SP: @p2.Name</h1>
+        <div class="card-body">
+            <p class="card-text">
+                Price: @p2.Price
+            </p>
+        </div>
+
+    </div>
+}
+
